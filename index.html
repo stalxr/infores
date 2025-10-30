@@ -998,10 +998,13 @@
       var wish = e.target.closest && e.target.closest('.add-to-wishlist');
       var cartBtn = e.target.closest && e.target.closest('.add-to-cart-btn, .add-to-cart');
       if (!wish && !cartBtn) return;
-      // Redirect to catalog from homepage interactions
+      // Redirect to catalog from homepage interactions and block other handlers
       e.preventDefault();
-      window.location.href = 'pages/store.html';
-    });
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      e.stopPropagation();
+      window.location.href = 'pages/store.html#sale';
+      return false;
+    }, true);
   });
 </script>
 

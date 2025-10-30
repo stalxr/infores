@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <title>Корзина</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/logo.png" />
 </head>
 <body>
 <header>
-    <nav>
-        <ul>
+    <nav class="main-navbar">
+        <ul class="navbar-menu">
             <li><a href="index.html">Главная</a></li>
-            <li><a href="products.html">Каталог</a></li>
-            <li><a href="cart.html">Корзина</a></li>
-            <li><a href="wishlist.html">Избранное</a></li>
+            <li class="dropdown">
+              <a href="#">Категории</a>
+              <ul class="dropdown-content">
+                  <li><a href="store.html#laptops">Ноутбуки</a></li>
+                  <li><a href="store.html#smartphones">Смартфоны</a></li>
+                  <li><a href="store.html#cameras">Камеры</a></li>
+                  <li><a href="store.html#accessories">Аксессуары</a></li>
+              </ul>
+            </li>
         </ul>
     </nav>
 </header>
@@ -26,5 +33,6 @@
 <footer>
     <p>© 2025 Infores. Все права защищены.</p>
 </footer>
+<script src="js/cart.js"></script>
 </body>
 </html>

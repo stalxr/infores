@@ -4,103 +4,136 @@
     <meta charset="UTF-8">
     <title>Каталог товаров</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="img/logo.png" />
 </head>
 <body>
 <header>
-    <nav>
-        <ul>
+    <nav class="main-navbar">
+        <ul class="navbar-menu">
             <li><a href="index.html">Главная</a></li>
-            <li><a href="store.html">Каталог</a></li>
-            <li><a href="cart.html">Корзина</a></li>
-            <li><a href="wishlist.html">Избранное</a></li>
-            <li><a href="pages/auth.html">Войти</a></li>
+            <li class="dropdown">
+              <a href="#">Категории</a>
+              <ul class="dropdown-content">
+                  <li><a href="#laptops">Ноутбуки</a></li>
+                  <li><a href="#smartphones">Смартфоны</a></li>
+                  <li><a href="#cameras">Камеры</a></li>
+                  <li><a href="#accessories">Аксессуары</a></li>
+              </ul>
+            </li>
         </ul>
     </nav>
 </header>
 <main>
     <h1>Каталог товаров</h1>
     <div id="filters">
-        <label>Категория:
-            <select id="filter-category">
-                <option value="all">Все</option>
-                <option value="laptops">Ноутбуки</option>
-                <option value="smartphones">Смартфоны</option>
-                <option value="headphones">Наушники</option>
-                <option value="cameras">Камеры</option>
-                <option value="accessories">Аксессуары</option>
-            </select>
-        </label>
+        <label>Категория:<select id="filter-category">
+            <option value="all">Все</option>
+            <option value="laptops">Ноутбуки</option>
+            <option value="smartphones">Смартфоны</option>
+            <option value="cameras">Камеры</option>
+            <option value="accessories">Аксессуары</option>
+        </select></label>
     </div>
     <div id="product-list">
-        <div class="product-card" data-id="laptop1" data-category="laptops">
+         <!-- Ноутбуки -->
+         <div class="product-card" data-id="laptop1" data-category="laptops">
             <img src="img/product01.png" alt="Ноутбук ASUS Zenbook 14 OLED">
-            <h4><a href="#">Ноутбук ASUS Zenbook 14 OLED</a></h4>
+            <p class="card-category">Ноутбуки</p>
+            <h4><a href="pages/product.html">Ноутбук ASUS Zenbook 14 OLED</a></h4>
             <p class="price">119 990 ₽</p>
             <button class="add-to-cart" data-id="laptop1">В корзину</button>
-            <button class="add-to-wishlist" data-id="laptop1">❤</button>
+            <button class="add-to-wishlist" data-id="laptop1">В избранное</button>
         </div>
         <div class="product-card" data-id="laptop2" data-category="laptops">
-            <img src="img/product02.png" alt="Ноутбук Apple MacBook Air 13">
-            <h4><a href="#">Ноутбук Apple MacBook Air 13"</a></h4>
-            <p class="price">99 990 ₽</p>
+            <img src="img/product02.png" alt="Ноутбук Dell Inspiron 15">
+            <p class="card-category">Ноутбуки</p>
+            <h4><a href="pages/product.html">Ноутбук Dell Inspiron 15</a></h4>
+            <p class="price">87 600 ₽</p>
             <button class="add-to-cart" data-id="laptop2">В корзину</button>
-            <button class="add-to-wishlist" data-id="laptop2">❤</button>
+            <button class="add-to-wishlist" data-id="laptop2">В избранное</button>
         </div>
-        <div class="product-card" data-id="smart1" data-category="smartphones">
-            <img src="img/product03.png" alt="Смартфон Samsung Galaxy S24">
-            <h4><a href="#">Смартфон Samsung Galaxy S24</a></h4>
+        <div class="product-card" data-id="laptop3" data-category="laptops">
+            <img src="img/product03.png" alt="Ноутбук MSI Modern 14">
+            <p class="card-category">Ноутбуки</p>
+            <h4><a href="pages/product.html">Ноутбук MSI Modern 14</a></h4>
+            <p class="price">68 100 ₽</p>
+            <button class="add-to-cart" data-id="laptop3">В корзину</button>
+            <button class="add-to-wishlist" data-id="laptop3">В избранное</button>
+        </div>
+         <!-- Смартфоны -->
+         <div class="product-card" data-id="smart1" data-category="smartphones">
+            <img src="img/product04.png" alt="Смартфон Samsung Galaxy S24">
+            <p class="card-category">Смартфоны</p>
+            <h4><a href="pages/product.html">Смартфон Samsung Galaxy S24</a></h4>
             <p class="price">79 990 ₽</p>
             <button class="add-to-cart" data-id="smart1">В корзину</button>
-            <button class="add-to-wishlist" data-id="smart1">❤</button>
+            <button class="add-to-wishlist" data-id="smart1">В избранное</button>
         </div>
         <div class="product-card" data-id="smart2" data-category="smartphones">
-            <img src="img/product04.png" alt="Смартфон Xiaomi 14 Pro">
-            <h4><a href="#">Смартфон Xiaomi 14 Pro</a></h4>
-            <p class="price">69 990 ₽</p>
+            <img src="img/product05.png" alt="Смартфон Xiaomi 14 Pro">
+            <p class="card-category">Смартфоны</p>
+            <h4><a href="pages/product.html">Смартфон Xiaomi 14 Pro</a></h4>
+            <p class="price">59 870 ₽</p>
             <button class="add-to-cart" data-id="smart2">В корзину</button>
-            <button class="add-to-wishlist" data-id="smart2">❤</button>
+            <button class="add-to-wishlist" data-id="smart2">В избранное</button>
         </div>
-        <div class="product-card" data-id="head1" data-category="headphones">
-            <img src="img/product05.png" alt="Наушники Sony WH-1000XM5">
-            <h4><a href="#">Наушники Sony WH-1000XM5</a></h4>
-            <p class="price">38 990 ₽</p>
-            <button class="add-to-cart" data-id="head1">В корзину</button>
-            <button class="add-to-wishlist" data-id="head1">❤</button>
+        <div class="product-card" data-id="smart3" data-category="smartphones">
+            <img src="img/product06.png" alt="Смартфон Realme 11 Pro">
+            <p class="card-category">Смартфоны</p>
+            <h4><a href="pages/product.html">Смартфон Realme 11 Pro</a></h4>
+            <p class="price">45 500 ₽</p>
+            <button class="add-to-cart" data-id="smart3">В корзину</button>
+            <button class="add-to-wishlist" data-id="smart3">В избранное</button>
         </div>
-        <div class="product-card" data-id="head2" data-category="headphones">
-            <img src="img/product06.png" alt="Наушники JBL Tune 770NC">
-            <h4><a href="#">Наушники JBL Tune 770NC</a></h4>
-            <p class="price">9 990 ₽</p>
-            <button class="add-to-cart" data-id="head2">В корзину</button>
-            <button class="add-to-wishlist" data-id="head2">❤</button>
-        </div>
+        <!-- Камеры -->
         <div class="product-card" data-id="camera1" data-category="cameras">
-            <img src="img/product07.png" alt="Фотоаппарат Canon EOS R50">
-            <h4><a href="#">Фотоаппарат Canon EOS R50</a></h4>
-            <p class="price">74 990 ₽</p>
+            <img src="img/product07.png" alt="Камера Canon EOS R50">
+            <p class="card-category">Камеры</p>
+            <h4><a href="pages/product.html">Камера Canon EOS R50</a></h4>
+            <p class="price">89 800 ₽</p>
             <button class="add-to-cart" data-id="camera1">В корзину</button>
-            <button class="add-to-wishlist" data-id="camera1">❤</button>
+            <button class="add-to-wishlist" data-id="camera1">В избранное</button>
         </div>
         <div class="product-card" data-id="camera2" data-category="cameras">
             <img src="img/product08.png" alt="Камера Sony ZV-E10">
-            <h4><a href="#">Камера Sony ZV-E10</a></h4>
-            <p class="price">67 990 ₽</p>
+            <p class="card-category">Камеры</p>
+            <h4><a href="pages/product.html">Камера Sony ZV-E10</a></h4>
+            <p class="price">62 910 ₽</p>
             <button class="add-to-cart" data-id="camera2">В корзину</button>
-            <button class="add-to-wishlist" data-id="camera2">❤</button>
+            <button class="add-to-wishlist" data-id="camera2">В избранное</button>
         </div>
+        <div class="product-card" data-id="camera3" data-category="cameras">
+            <img src="img/product09.png" alt="Камера Nikon Z30">
+            <p class="card-category">Камеры</p>
+            <h4><a href="pages/product.html">Камера Nikon Z30</a></h4>
+            <p class="price">71 340 ₽</p>
+            <button class="add-to-cart" data-id="camera3">В корзину</button>
+            <button class="add-to-wishlist" data-id="camera3">В избранное</button>
+        </div>
+        <!-- Аксессуары -->
         <div class="product-card" data-id="acc1" data-category="accessories">
-            <img src="img/product09.png" alt="Портативная колонка JBL Charge 5">
-            <h4><a href="#">Портативная колонка JBL Charge 5</a></h4>
-            <p class="price">12 990 ₽</p>
+            <img src="img/product01.png" alt="Мышь Logitech M650">
+            <p class="card-category">Аксессуары</p>
+            <h4><a href="pages/product.html">Мышь Logitech M650</a></h4>
+            <p class="price">2 480 ₽</p>
             <button class="add-to-cart" data-id="acc1">В корзину</button>
-            <button class="add-to-wishlist" data-id="acc1">❤</button>
+            <button class="add-to-wishlist" data-id="acc1">В избранное</button>
         </div>
         <div class="product-card" data-id="acc2" data-category="accessories">
-            <img src="img/product01.png" alt="Беспроводная мышь Logitech M185">
-            <h4><a href="#">Беспроводная мышь Logitech M185</a></h4>
-            <p class="price">1 290 ₽</p>
+            <img src="img/product02.png" alt="Клавиатура Redragon Shiva">
+            <p class="card-category">Аксессуары</p>
+            <h4><a href="pages/product.html">Клавиатура Redragon Shiva</a></h4>
+            <p class="price">3 990 ₽</p>
             <button class="add-to-cart" data-id="acc2">В корзину</button>
-            <button class="add-to-wishlist" data-id="acc2">❤</button>
+            <button class="add-to-wishlist" data-id="acc2">В избранное</button>
+        </div>
+        <div class="product-card" data-id="acc3" data-category="accessories">
+            <img src="img/product03.png" alt="Беспроводные наушники Sony WH-CH520">
+            <p class="card-category">Аксессуары</p>
+            <h4><a href="pages/product.html">Беспроводные наушники Sony WH-CH520</a></h4>
+            <p class="price">6 500 ₽</p>
+            <button class="add-to-cart" data-id="acc3">В корзину</button>
+            <button class="add-to-wishlist" data-id="acc3">В избранное</button>
         </div>
     </div>
 </main>

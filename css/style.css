@@ -2189,41 +2189,33 @@ textarea.input {
   }
 }
 
-/* Оформление карточек */
-.product-card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 14px;
-    margin: 10px;
-    display: inline-block;
-    width: 224px;
-    vertical-align: top;
-    text-align: center;
-    background: #fff;
-}
-.product-card img { max-width: 100%; height: 120px; object-fit: contain; margin-bottom: 8px; }
+/* Навигация */
+.main-navbar { background: #232323; }
+.navbar-menu { list-style: none; margin: 0; padding:0; display: flex; }
+.navbar-menu > li { position: relative; }
+.navbar-menu > li > a { color: #fff; text-decoration: none; padding: 17px 24px; display: block; font-size: 18px; }
+.navbar-menu > li > a:hover { background: #0088cc; }
+.dropdown-content { position: absolute; left:0; top:100%; background:#fff; min-width:190px; display:none; box-shadow:0 2px 10px #0002; z-index: 100; }
+.dropdown:hover .dropdown-content { display:block; }
+.dropdown-content li a { color:#222; display:block; padding:12px 16px; border-bottom:1px solid #f0f0f0; text-decoration:none; }
+.dropdown-content li:last-child a {border-bottom:none;}
+.dropdown-content li a:hover {background:#f0fbff;color:#0095e2;}
+
+/* Карточки */
+.product-card { border: 1px solid #e0e0e0; border-radius: 8px; padding: 14px; margin: 10px; display: inline-block; width: 240px; vertical-align: top; text-align: center; background: #fff; }
+.product-card img { max-width: 95%; height: 120px; object-fit: contain; margin-bottom: 8px; }
 .product-card h4 { font-size: 18px; margin: 10px 0 7px 0; }
-.product-card .price {font-weight: bold;margin-bottom:10px;}
-.product-card button {margin: 0 3px 5px 3px;padding: 7px 14px;border:none;border-radius:4px;cursor:pointer;background:#00aaff;color:#fff;}
+.product-card .price {font-weight: bold;margin-bottom:10px;font-size:16px;}
+.product-card .card-category {color:#0095e2;font-size:14px;margin-bottom:0;}
+.product-card button {margin: 0 3px 5px 3px;padding: 8px 16px 8px 16px;border:none;border-radius:4px;cursor:pointer;background:#00aaff;color:#fff;font-size:15px;transition:background .17s;}
 .product-card button.add-to-wishlist {background:#fff;color:#d00; border:1px solid #d00;}
 .product-card button.added {background:#d00;color:#fff;}
+.product-card button:hover {background:#008dcc;color:#fff;}
+.product-card button.add-to-wishlist:hover {background:#ffd6db;color:#ba1135;}
 
 /* Toast уведомления */
-.toast-notify {
-    position: fixed;
-    top: 18px;
-    right: 21px;
-    z-index: 999;
-    background: #232323;
-    color: #fff;
-    padding: 12px 16px;
-    opacity: 0.96;
-    border-radius: 8px;
-    font-size: 17px;
-    box-shadow: 0 2px 8px #4442;
-    animation: toast-anim 0.4s cubic-bezier(.36,.59,.55,1.45);
-}
-@keyframes toast-anim {
- from { opacity:0; transform: translateY(-60px) scale(0.85);}
- to { opacity:1; transform: translateY(0) scale(1);}
-}
+.toast-notify,.toast { position: fixed; top: 18px; right: 21px; z-index: 999; background: #232323; color: #fff; padding: 12px 16px; opacity: 0.96; border-radius: 8px; font-size: 17px; box-shadow: 0 2px 8px #4442; animation: toast-anim 0.4s cubic-bezier(.36,.59,.55,1.45); }
+@keyframes toast-anim { from { opacity:0; transform: translateY(-60px) scale(0.85);} to { opacity:1; transform: translateY(0) scale(1);}}
+
+/* Footer */
+footer { background: #232323; color: #fff; text-align: center; padding: 18px 0 20px 0; margin-top: 36px; font-size:16px;letter-spacing:0.3px; }

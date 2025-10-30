@@ -97,12 +97,14 @@
 				<div id="responsive-nav">
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="../index.html">Главная</a></li>
-						<li><a href="store.html">Горячие предложения</a></li>
-						<li><a href="store.html">Категории</a></li>
-						<li><a href="store.html">Ноутбуки</a></li>
-						<li><a href="store.html">Смартфоны</a></li>
-						<li><a href="store.html">Камеры</a></li>
-						<li><a href="store.html">Аксессуары</a></li>
+						<li><a href="#">Категории</a>
+							<ul>
+								<li><a href="store.html#laptops">Ноутбуки</a></li>
+								<li><a href="store.html#smartphones">Смартфоны</a></li>
+								<li><a href="store.html#cameras">Камеры</a></li>
+								<li><a href="store.html#accessories">Аксессуары</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -129,22 +131,10 @@
 						<div class="aside">
 							<h3 class="aside-title">Категории</h3>
 							<div class="checkbox-filter">
-								<div class="input-checkbox">
-									<input type="checkbox" id="cat-laptops" data-filter="category" value="laptop">
-									<label for="cat-laptops"><span></span>Ноутбуки</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="cat-phones" data-filter="category" value="smartphone">
-									<label for="cat-phones"><span></span>Смартфоны</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="cat-cameras" data-filter="category" value="camera">
-									<label for="cat-cameras"><span></span>Камеры</label>
-								</div>
-								<div class="input-checkbox">
-									<input type="checkbox" id="cat-accessories" data-filter="category" value="accessory">
-									<label for="cat-accessories"><span></span>Аксессуары</label>
-								</div>
+								<div class="input-checkbox"><input type="checkbox" id="cat-laptops" data-filter="category" value="laptop"><label for="cat-laptops"><span></span>Ноутбуки</label></div>
+								<div class="input-checkbox"><input type="checkbox" id="cat-phones" data-filter="category" value="smartphone"><label for="cat-phones"><span></span>Смартфоны</label></div>
+								<div class="input-checkbox"><input type="checkbox" id="cat-cameras" data-filter="category" value="camera"><label for="cat-cameras"><span></span>Камеры</label></div>
+								<div class="input-checkbox"><input type="checkbox" id="cat-accessories" data-filter="category" value="accessory"><label for="cat-accessories"><span></span>Аксессуары</label></div>
 							</div>
 						</div>
 
@@ -200,29 +190,29 @@
 						</div>
 
 						<div class="row" id="products-grid">
-							<div class="col-md-4 col-xs-6">
-								<div class="product" data-category="laptop" data-brand="samsung" data-price="980">
-									<div class="product-img">
-										<img src="../img/product01.png" alt="">
-										<div class="product-label"><span class="sale">-30%</span><span class="new">НОВИНКА</span></div>
-									</div>
-									<div class="product-body">
-										<p class="product-category">Категория</p>
-										<h3 class="product-name"><a href="product.html">Название товара</a></h3>
-										<h4 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h4>
-										<div class="product-rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-										<div class="product-btns">
-											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
-											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
-											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
-										</div>
-									</div>
-									<div class="add-to-cart">
-										<button class="add-to-cart-btn" data-id="p1" data-name="Название товара" data-price="980" data-image="../img/product01.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
-									</div>
-								</div>
-							</div>
-							<!-- Можно добавить больше карточек с корректными data-атрибутами -->
+							<!-- Ноутбуки -->
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product01.png" alt="ASUS Zenbook 14 OLED"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">ASUS Zenbook 14 OLED</a></h3><h4 class="product-price">119 990 ₽</h4><button class="add-to-cart" data-id="laptop1">В корзину</button><button class="add-to-wishlist" data-id="laptop1">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product02.png" alt="Dell Inspiron 15"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">Dell Inspiron 15</a></h3><h4 class="product-price">87 600 ₽</h4><button class="add-to-cart" data-id="laptop2">В корзину</button><button class="add-to-wishlist" data-id="laptop2">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product03.png" alt="MSI Modern 14"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">MSI Modern 14</a></h3><h4 class="product-price">68 100 ₽</h4><button class="add-to-cart" data-id="laptop3">В корзину</button><button class="add-to-wishlist" data-id="laptop3">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product04.png" alt="Apple MacBook Air 13"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">Apple MacBook Air 13"</a></h3><h4 class="product-price">99 900 ₽</h4><button class="add-to-cart" data-id="laptop4">В корзину</button><button class="add-to-wishlist" data-id="laptop4">В избранное</button></div></div>
+
+							<!-- Смартфоны -->
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product05.png" alt="Samsung Galaxy S24"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Samsung Galaxy S24</a></h3><h4 class="product-price">79 990 ₽</h4><button class="add-to-cart" data-id="smart1">В корзину</button><button class="add-to-wishlist" data-id="smart1">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product06.png" alt="Realme 11 Pro"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Realme 11 Pro</a></h3><h4 class="product-price">45 500 ₽</h4><button class="add-to-cart" data-id="smart2">В корзину</button><button class="add-to-wishlist" data-id="smart2">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product07.png" alt="Xiaomi 14 Pro"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Xiaomi 14 Pro</a></h3><h4 class="product-price">59 870 ₽</h4><button class="add-to-cart" data-id="smart3">В корзину</button><button class="add-to-wishlist" data-id="smart3">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product08.png" alt="Honor 90 Lite"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Honor 90 Lite</a></h3><h4 class="product-price">29 990 ₽</h4><button class="add-to-cart" data-id="smart4">В корзину</button><button class="add-to-wishlist" data-id="smart4">В избранное</button></div></div>
+
+							<!-- Камеры -->
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product09.png" alt="Canon EOS R50"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Canon EOS R50</a></h3><h4 class="product-price">89 800 ₽</h4><button class="add-to-cart" data-id="camera1">В корзину</button><button class="add-to-wishlist" data-id="camera1">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product01.png" alt="Sony ZV-E10"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Sony ZV-E10</a></h3><h4 class="product-price">62 910 ₽</h4><button class="add-to-cart" data-id="camera2">В корзину</button><button class="add-to-wishlist" data-id="camera2">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product02.png" alt="Nikon Z30"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Nikon Z30</a></h3><h4 class="product-price">71 340 ₽</h4><button class="add-to-cart" data-id="camera3">В корзину</button><button class="add-to-wishlist" data-id="camera3">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product03.png" alt="Panasonic Lumix G7"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Panasonic Lumix G7</a></h3><h4 class="product-price">61 500 ₽</h4><button class="add-to-cart" data-id="camera4">В корзину</button><button class="add-to-wishlist" data-id="camera4">В избранное</button></div></div>
+
+							<!-- Аксессуары -->
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product04.png" alt="Мышь Logitech M650"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Мышь Logitech M650</a></h3><h4 class="product-price">2 480 ₽</h4><button class="add-to-cart" data-id="acc1">В корзину</button><button class="add-to-wishlist" data-id="acc1">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product05.png" alt="Клавиатура Redragon Shiva"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Клавиатура Redragon Shiva</a></h3><h4 class="product-price">3 990 ₽</h4><button class="add-to-cart" data-id="acc2">В корзину</button><button class="add-to-wishlist" data-id="acc2">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product06.png" alt="Наушники Sony WH-CH520"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Наушники Sony WH-CH520</a></h3><h4 class="product-price">6 500 ₽</h4><button class="add-to-cart" data-id="acc3">В корзину</button><button class="add-to-wishlist" data-id="acc3">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product07.png" alt="Колонка JBL Go 3"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Колонка JBL Go 3</a></h3><h4 class="product-price">3 799 ₽</h4><button class="add-to-cart" data-id="acc4">В корзину</button><button class="add-to-wishlist" data-id="acc4">В избранное</button></div></div>
 						</div>
 					</div>
 				</div>
@@ -251,80 +241,7 @@
 			</div>
 		</div>
 
-		<footer id="footer">
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">О нас</h3>
-								<p>Интернет‑магазин электроники. Поддержка и гарантия.</p>
-								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>г. Москва, ул. Тверская, 1</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+7 (999) 123-45-67</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>info@example.ru</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Категории</h3>
-								<ul class="footer-links">
-									<li><a href="store.html">Горячие предложения</a></li>
-									<li><a href="store.html">Ноутбуки</a></li>
-									<li><a href="store.html">Смартфоны</a></li>
-									<li><a href="store.html">Камеры</a></li>
-									<li><a href="store.html">Аксессуары</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Информация</h3>
-								<ul class="footer-links">
-									<li><a href="#">О нас</a></li>
-									<li><a href="#">Контакты</a></li>
-									<li><a href="#">Политика конфиденциальности</a></li>
-									<li><a href="#">Заказы и возвраты</a></li>
-									<li><a href="#">Условия использования</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">Сервис</h3>
-								<ul class="footer-links">
-									<li><a href="auth.html">Мой аккаунт</a></li>
-									<li><a href="store.html">Корзина</a></li>
-									<li><a href="#">Избранное</a></li>
-									<li><a href="#">Отследить заказ</a></li>
-									<li><a href="#">Помощь</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="bottom-footer" class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<ul class="footer-payments">
-								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
-								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
-								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
-							</ul>
-						<span class="copyright">
-							<a href="https://templatespoint.net" target="_blank">TemplatesPoint</a>
-						</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<footer class="footer"><p>© 2025 Infores. Все права защищены.</p></footer>
 
 		<script src="../js/jquery.min.js"></script>
 		<script src="../js/bootstrap.min.js"></script>

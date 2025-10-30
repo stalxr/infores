@@ -61,4 +61,9 @@ body {
 .footer { background:#15161d; color:#fff; padding:16px 0; margin:0; border-top:1px solid #2b2f3a; }
 .footer p { margin:0; text-align:center; }
 
+/* Wishlist heart styles */
+.add-to-wishlist { cursor: pointer; }
+.add-to-wishlist i { transition: color .15s ease; }
+.add-to-wishlist.added i, .add-to-wishlist i.fa-heart { color: #e53935; }
+
 

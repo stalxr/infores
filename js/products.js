@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
+    // normalize wishlist buttons
+    document.querySelectorAll('.add-to-wishlist').forEach(function(b){ try{ b.setAttribute('type','button'); } catch(_){} });
     // ФИЛЬТР (legacy minimal)
     var filter = document.getElementById('filter-category');
     if (filter) {
@@ -15,6 +17,23 @@ document.addEventListener('DOMContentLoaded', function(){
                 item.style.display = 'none';
             }
         });
+    }
+
+    // helper to resolve stable product id
+    function resolveProductIdFrom(el){
+      var product = el.closest ? el.closest('.product') : null;
+      var id = product && product.getAttribute('data-id');
+      if (!id && product){
+        var cartBtn = product.querySelector('.add-to-cart-btn');
+        if (cartBtn) id = cartBtn.getAttribute('data-id');
+      }
+      if (!id){
+        var nameEl = product ? product.querySelector('.product-name a') : null;
+        var imgEl = product ? product.querySelector('.product-img img') : null;
+        var key = (nameEl ? nameEl.textContent.trim() : '') + '|' + (imgEl ? imgEl.getAttribute('src') : '');
+        if (key) id = 'pid:' + btoa(unescape(encodeURIComponent(key))).slice(0,12);
+      }
+      return id || null;
     }
 
     // КОРЗИНА (legacy demo)
@@ -37,9 +56,8 @@ document.addEventListener('DOMContentLoaded', function(){
     function updateWishlistIcons() {
       let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
       document.querySelectorAll('.add-to-wishlist').forEach(btn => {
-        const product = btn.closest('.product');
-        const id = product ? product.getAttribute('data-id') : btn.getAttribute('data-id');
-        const icon = btn.querySelector('i');
+        var id = resolveProductIdFrom(btn);
+        var icon = btn.querySelector('i');
         if(id && icon) {
           if (wishlist.includes(id)) {
             icon.classList.remove('fa-heart-o');
@@ -61,8 +79,7 @@ document.addEventListener('DOMContentLoaded', function(){
     document.body.addEventListener('click', function(e){
       var btn = e.target.closest('.add-to-wishlist');
       if (!btn) return;
-      const product = btn.closest('.product');
-      const id = product ? product.getAttribute('data-id') : btn.getAttribute('data-id');
+      var id = resolveProductIdFrom(btn);
       if (!id) return;
       let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
       const idx = wishlist.indexOf(id);

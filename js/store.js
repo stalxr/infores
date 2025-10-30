@@ -89,12 +89,14 @@
     const min = parseFloat(document.getElementById('price-min')?.value)||0;
     const max = parseFloat(document.getElementById('price-max')?.value)||Number.MAX_VALUE;
     const query = (document.getElementById('search-name')?.value||'').trim().toLowerCase();
+    const onlySale = !!(document.getElementById('only-sale') && document.getElementById('only-sale').checked);
     state.filtered = PRODUCTS.filter(p => {
       const okC = !cats.length || cats.includes(p.category);
       const okB = !brands.length || brands.includes(p.brand);
       const okP = p.price>=min && p.price<=max;
       const okQ = !query || p.name.toLowerCase().includes(query);
-      return okC && okB && okP && okQ;
+      const okS = !onlySale || !!p.oldPrice;
+      return okC && okB && okP && okQ && okS;
     });
     state.page=1;
     renderProducts();
@@ -112,14 +114,17 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    // If hash #sale — show only discounted items
-    if (window.location.hash === '#sale') {
-      state.filtered = PRODUCTS.filter(function(p){return !!p.oldPrice;});
-    }
+    var wantSale = (window.location.hash === '#sale');
     resetFilters();
+    if (wantSale){
+      var saleCb = document.getElementById('only-sale');
+      if (saleCb) saleCb.checked = true;
+      applyFilters();
+    }
     const filterBtn = document.getElementById('filter-apply-btn'); if (filterBtn) filterBtn.onclick = applyFilters;
     const resetBtn = document.getElementById('filter-reset-btn'); if (resetBtn) resetBtn.onclick = resetFilters;
     ['price-min','price-max','search-name'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('keypress',function(e){if(e.key==='Enter')applyFilters();}); });
+    var saleCb2 = document.getElementById('only-sale'); if (saleCb2) saleCb2.addEventListener('change', applyFilters);
   });
 
   // Помощник для checkboxes, category и brand

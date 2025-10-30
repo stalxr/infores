@@ -52,6 +52,10 @@
         </div>`;
       grid.appendChild(el);
     });
+    // normalize wishlist buttons for newly rendered products
+    try {
+      grid.querySelectorAll('.add-to-wishlist').forEach(function(b){ b.setAttribute('type','button'); b.setAttribute('role','button'); });
+    } catch(_){}
     // Повторно инициализировать wishlist icon state (см. products.js)
     if(window.updateWishlistIcons) updateWishlistIcons();
   }

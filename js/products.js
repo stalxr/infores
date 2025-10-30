@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function(){
     // normalize wishlist buttons
-    document.querySelectorAll('.add-to-wishlist').forEach(function(b){ try{ b.setAttribute('type','button'); } catch(_){} });
+    (function normalizeWishlistButtons(){
+      document.querySelectorAll('.add-to-wishlist').forEach(function(b){
+        try{ b.setAttribute('type','button'); b.setAttribute('role','button'); } catch(_){}
+      });
+    })();
+
     // ФИЛЬТР (legacy minimal)
     var filter = document.getElementById('filter-category');
     if (filter) {
@@ -73,27 +78,24 @@ document.addEventListener('DOMContentLoaded', function(){
       var qty = document.getElementById('wishlist-qty');
       if (qty) qty.textContent = String(wishlist.length);
     }
-    // expose globally
     window.updateWishlistIcons = updateWishlistIcons;
 
-    document.body.addEventListener('click', function(e){
-      var target = e.target;
-      var btn = target.closest && target.closest('.add-to-wishlist');
-      if (!btn){
-        // если клик прямо по иконке сердца
-        if (target.classList && (target.classList.contains('fa-heart') || target.classList.contains('fa-heart-o'))){
-          btn = target.closest('.product-btns') ? target.closest('.product-btns').querySelector('.add-to-wishlist') : null;
-        }
-      }
-      if (!btn) return;
-      var id = resolveProductIdFrom(btn);
-      if (!id) return;
-      let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-      const idx = wishlist.indexOf(id);
-      if (idx === -1) wishlist.push(id); else wishlist.splice(idx,1);
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      updateWishlistIcons();
-    });
+    if (!document.body._wishlistBound){
+      document.body.addEventListener('click', function(e){
+        var btn = e.target.closest && e.target.closest('.add-to-wishlist');
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var id = resolveProductIdFrom(btn);
+        if (!id) return;
+        let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        const idx = wishlist.indexOf(id);
+        if (idx === -1) wishlist.push(id); else wishlist.splice(idx,1);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        updateWishlistIcons();
+      }, false);
+      document.body._wishlistBound = true;
+    }
 
     function bindWishlistHeaderIcon() {
       document.querySelectorAll('a, div, span, .qty, i').forEach(el => {
@@ -116,11 +118,11 @@ document.addEventListener('DOMContentLoaded', function(){
     bindWishlistHeaderIcon();
 
     function showToast(text) {
-        const toast = document.createElement('div');
-        toast.className = 'toast-mini';
-        toast.textContent = text;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 1600);
+      const toast = document.createElement('div');
+      toast.className = 'toast-mini';
+      toast.textContent = text;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 1600);
     }
 
     // начальная синхронизация

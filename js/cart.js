@@ -105,6 +105,7 @@
       }
       addToCart({ id: id, name: name, price: price, image: image || '', qty: 1 });
       showToast('товар успешно добавлен');
+      try { btn.textContent = 'Уже в корзине'; } catch(_){}
     });
 
     // Запасной глобальный обработчик (если удаление вне dropdown)

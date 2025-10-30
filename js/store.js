@@ -6,19 +6,19 @@
 
   // ==== Данные товаров (пример, расширять по нужде) ====
   const PRODUCTS = [
-    {id:'laptop1', name:'ASUS Zenbook 14 OLED UX3402', price:119990, img:'../img/product01.png', category:'laptop', brand:'asus'},
-    {id:'laptop2', name:'MSI Modern 14 C12', price:68100, img:'../img/product03.png', category:'laptop', brand:'msi'},
+    {id:'laptop1', name:'ASUS Zenbook 14 OLED UX3402', price:119990, oldPrice:139990, img:'../img/product01.png', category:'laptop', brand:'asus'},
+    {id:'laptop2', name:'MSI Modern 14 C12', price:68100, oldPrice:73990, img:'../img/product03.png', category:'laptop', brand:'msi'},
     {id:'laptop3', name:'HP Pavilion 15', price:74990, img:'../img/product06.png', category:'laptop', brand:'hp'},
     {id:'laptop4', name:'Lenovo IdeaPad 5 14', price:62990, img:'../img/product08.png', category:'laptop', brand:'lenovo'},
 
     {id:'head1', name:'Sony WH-CH720N', price:9990, img:'../img/product02.png', category:'headphones', brand:'sony'},
-    {id:'head2', name:'JBL Tune 510BT', price:3990, img:'../img/product05.png', category:'headphones', brand:'jbl'},
+    {id:'head2', name:'JBL Tune 510BT', price:3990, oldPrice:4990, img:'../img/product05.png', category:'headphones', brand:'jbl'},
 
-    {id:'tablet1', name:'Apple iPad 10.9 (2022)', price:39990, img:'../img/product04.png', category:'tablet', brand:'apple'},
+    {id:'tablet1', name:'Apple iPad 10.9 (2022)', price:39990, oldPrice:45990, img:'../img/product04.png', category:'tablet', brand:'apple'},
 
     {id:'phone1', name:'Samsung Galaxy S23', price:79990, img:'../img/product07.png', category:'smartphone', brand:'samsung'},
 
-    {id:'camera1', name:'Canon EOS R50', price:89800, img:'../img/product09.png', category:'camera', brand:'canon'}
+    {id:'camera1', name:'Canon EOS R50', price:89800, oldPrice:96990, img:'../img/product09.png', category:'camera', brand:'canon'}
   ];
   let state = {page:1, filtered: PRODUCTS.slice()};
 
@@ -36,11 +36,11 @@
       el.className = 'col-md-3 col-xs-6';
       el.innerHTML = `
         <div class="product" data-id="${prod.id}" data-category="${prod.category}" data-brand="${prod.brand}" data-price="${prod.price}">
-          <div class="product-img"><img src="${prod.img}" alt="${prod.name}"></div>
+          <div class="product-img"><img src="${prod.img}" alt="${prod.name}">${prod.oldPrice?'<div class="product-label"><span class="sale">-30%</span></div>':''}</div>
           <div class="product-body">
             <p class="product-category">${categoryName(prod.category)}</p>
             <h3 class="product-name"><a href="#">${prod.name}</a></h3>
-            <h4 class="product-price">${prod.price.toLocaleString('ru-RU')} ₽</h4>
+            <h4 class="product-price">${prod.price.toLocaleString('ru-RU')} ₽ ${prod.oldPrice?('<del class="product-old-price">'+prod.oldPrice.toLocaleString('ru-RU')+' ₽</del>'):''}</h4>
             <div class="product-rating">${'<i class="fa fa-star"></i>'.repeat(5)}</div>
             <div class="product-btns">
               <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
@@ -112,6 +112,10 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
+    // If hash #sale — show only discounted items
+    if (window.location.hash === '#sale') {
+      state.filtered = PRODUCTS.filter(function(p){return !!p.oldPrice;});
+    }
     resetFilters();
     const filterBtn = document.getElementById('filter-apply-btn'); if (filterBtn) filterBtn.onclick = applyFilters;
     const resetBtn = document.getElementById('filter-reset-btn'); if (resetBtn) resetBtn.onclick = resetFilters;

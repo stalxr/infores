@@ -2188,3 +2188,42 @@ textarea.input {
     margin-top: 10px;
   }
 }
+
+/* Оформление карточек */
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px;
+    margin: 10px;
+    display: inline-block;
+    width: 224px;
+    vertical-align: top;
+    text-align: center;
+    background: #fff;
+}
+.product-card img { max-width: 100%; height: 120px; object-fit: contain; margin-bottom: 8px; }
+.product-card h4 { font-size: 18px; margin: 10px 0 7px 0; }
+.product-card .price {font-weight: bold;margin-bottom:10px;}
+.product-card button {margin: 0 3px 5px 3px;padding: 7px 14px;border:none;border-radius:4px;cursor:pointer;background:#00aaff;color:#fff;}
+.product-card button.add-to-wishlist {background:#fff;color:#d00; border:1px solid #d00;}
+.product-card button.added {background:#d00;color:#fff;}
+
+/* Toast уведомления */
+.toast-notify {
+    position: fixed;
+    top: 18px;
+    right: 21px;
+    z-index: 999;
+    background: #232323;
+    color: #fff;
+    padding: 12px 16px;
+    opacity: 0.96;
+    border-radius: 8px;
+    font-size: 17px;
+    box-shadow: 0 2px 8px #4442;
+    animation: toast-anim 0.4s cubic-bezier(.36,.59,.55,1.45);
+}
+@keyframes toast-anim {
+ from { opacity:0; transform: translateY(-60px) scale(0.85);}
+ to { opacity:1; transform: translateY(0) scale(1);}
+}

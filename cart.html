@@ -6,12 +6,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header><!-- навигация будет позже --></header>
-    <main>
-        <h1>Корзина</h1>
-        <div id="cart-list"></div>
-        <div id="cart-total-block">Итого: <span id="cart-total">0 ₽</span></div>
-    </main>
-    <footer><!-- футер будет позже --></footer>
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="products.html">Каталог</a></li>
+            <li><a href="cart.html">Корзина</a></li>
+            <li><a href="wishlist.html">Избранное</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Корзина</h1>
+    <div id="cart-list"></div>
+    <div id="cart-empty" style="display: none;">Ваша корзина пуста</div>
+    <div id="cart-auth-required" style="display: none;">Сначала войдите в профиль, чтобы просмотреть корзину.</div>
+    <div id="cart-total-block">Итого: <span id="cart-total">0 ₽</span></div>
+</main>
+<footer>
+    <p>© 2025 Infores. Все права защищены.</p>
+</footer>
 </body>
 </html>

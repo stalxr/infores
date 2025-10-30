@@ -50,34 +50,54 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    updateBadge();
-    renderDropdown();
-    document.body.addEventListener('click', function(e){
-      var btn = e.target.closest('.add-to-wishlist');
-      if (!btn) return;
-      // Гейт: только после регистрации
-      try {
-        var user = JSON.parse(localStorage.getItem('electro_user')||'null');
-        if (!user){
-          alert('Для добавления в избранное войдите или зарегистрируйтесь');
-          window.location.href = 'pages/auth.html';
-          return;
-        }
-      } catch(_) {}
-      var product = btn.closest('.product');
-      var id = (product && (product.getAttribute('data-id') || product.querySelector('.add-to-cart-btn')?.getAttribute('data-id'))) || 'p';
-      toggleWishlist({ id: id });
-      renderDropdown();
+    const wishlistBlock = document.getElementById('wishlist-list');
+    const emptyBlock = document.getElementById('wishlist-empty');
+    let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    if(!wishlist.length){
+        emptyBlock.style.display = 'block';
+        wishlistBlock.innerHTML = '';
+        return;
+    }else{
+        emptyBlock.style.display = 'none';
+    }
+    // Пример набора товаров, синхронизируем с products
+    const products = [
+        {id:'laptop1', name:'Ноутбук ASUS Zenbook 14 OLED', price:119990, img:'img/product01.png'},
+        {id:'laptop2', name:'Ноутбук Apple MacBook Air 13"', price:99990, img:'img/product02.png'},
+        {id:'smart1', name:'Смартфон Samsung Galaxy S24', price:79990, img:'img/product03.png'},
+        {id:'smart2', name:'Смартфон Xiaomi 14 Pro', price:69990, img:'img/product04.png'},
+        {id:'head1', name:'Наушники Sony WH-1000XM5', price:38990, img:'img/product05.png'},
+        {id:'head2', name:'Наушники JBL Tune 770NC', price:9990, img:'img/product06.png'},
+        {id:'camera1', name:'Фотоаппарат Canon EOS R50', price:74990, img:'img/product07.png'},
+        {id:'camera2', name:'Камера Sony ZV-E10', price:67990, img:'img/product08.png'},
+        {id:'acc1', name:'Портативная колонка JBL Charge 5', price:12990, img:'img/product09.png'},
+        {id:'acc2', name:'Беспроводная мышь Logitech M185', price:1290, img:'img/product01.png'},
+    ];
+    let html = '';
+    wishlist.forEach(id=>{
+        const prod = products.find(p=>p.id===id);
+        if(!prod)return;
+        html += `<div class="product-card" data-id="${prod.id}">
+            <img src="${prod.img}" alt="${prod.name}">
+            <h4>${prod.name}</h4>
+            <p class="price">${prod.price.toLocaleString()} ₽</p>
+            <button class="add-to-cart" data-id="${prod.id}">В корзину</button>
+        </div>`;
     });
-    document.body.addEventListener('click', function(e){
-      var del = e.target.closest('[data-wish-remove]');
-      if (!del) return;
-      var id = del.getAttribute('data-wish-remove');
-      if (!id) return;
-      var list = read().filter(function(x){return x!==id});
-      write(list);
-      updateBadge();
-      renderDropdown();
+    wishlistBlock.innerHTML = html;
+    // обработка кнопок "В корзину"
+    wishlistBlock.querySelectorAll('.add-to-cart').forEach(btn=>{
+        btn.addEventListener('click', function(){
+            let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+            const id = btn.dataset.id;
+            if(!cart.includes(id)){
+                cart.push(id);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                btn.textContent = 'Добавлено в корзину';
+            }else{
+                btn.textContent = 'Уже в корзине';
+            }
+        });
     });
   });
 })();

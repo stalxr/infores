@@ -100,9 +100,55 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    bindAddToCartButtons();
-    renderHeaderCart();
-  });
+    const cartBlock = document.getElementById('cart-list');
+    const emptyBlock = document.getElementById('cart-empty');
+    const authBlock = document.getElementById('cart-auth-required');
+    const cartTotal = document.getElementById('cart-total');
+    // Проверка авторизации (пример — можно поменять под свою auth)
+    let logged = localStorage.getItem('userLogged');
+    if(!logged){
+        emptyBlock.style.display = 'none';
+        authBlock.style.display = 'block';
+        cartBlock.innerHTML = '';
+        return;
+    }
+    authBlock.style.display = 'none';
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if(!cart.length){
+        emptyBlock.style.display = 'block';
+        cartBlock.innerHTML = '';
+        return;
+    }else{
+        emptyBlock.style.display = 'none';
+    }
+    // Пример набора товаров, синхронизируем с products
+    const products = [
+        {id:'laptop1', name:'Ноутбук ASUS Zenbook 14 OLED', price:119990, img:'img/product01.png'},
+        {id:'laptop2', name:'Ноутбук Apple MacBook Air 13"', price:99990, img:'img/product02.png'},
+        {id:'smart1', name:'Смартфон Samsung Galaxy S24', price:79990, img:'img/product03.png'},
+        {id:'smart2', name:'Смартфон Xiaomi 14 Pro', price:69990, img:'img/product04.png'},
+        {id:'head1', name:'Наушники Sony WH-1000XM5', price:38990, img:'img/product05.png'},
+        {id:'head2', name:'Наушники JBL Tune 770NC', price:9990, img:'img/product06.png'},
+        {id:'camera1', name:'Фотоаппарат Canon EOS R50', price:74990, img:'img/product07.png'},
+        {id:'camera2', name:'Камера Sony ZV-E10', price:67990, img:'img/product08.png'},
+        {id:'acc1', name:'Портативная колонка JBL Charge 5', price:12990, img:'img/product09.png'},
+        {id:'acc2', name:'Беспроводная мышь Logitech M185', price:1290, img:'img/product01.png'},
+    ];
+    let html = '';
+    let total = 0;
+    cart.forEach(id=>{
+        const prod = products.find(p=>p.id===id);
+        if(!prod)return;
+        html += `<div class="product-card" data-id="${prod.id}">
+            <img src="${prod.img}" alt="${prod.name}">
+            <h4>${prod.name}</h4>
+            <p class="price">${prod.price.toLocaleString()} ₽</p>
+        </div>`;
+        total+=prod.price;
+    });
+    cartBlock.innerHTML = html;
+    cartTotal.textContent = total.toLocaleString()+ ' ₽';
+});
 })();
 
 

@@ -51,16 +51,6 @@
         </div>`;
       wishGrid.appendChild(col);
     });
-    wishGrid.querySelectorAll('.wish-delete').forEach(btn=>{
-      btn.onclick = function(){
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
-        const id = btn.getAttribute('data-wish-remove');
-        wishlist = wishlist.filter(x=>x!==id);
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        renderWishlist();
-        if(window.updateWishlistIcons) window.updateWishlistIcons();
-      };
-    });
   }
   function categoryName(val){
     if(val==='laptop') return 'Ноутбуки';
@@ -71,12 +61,30 @@
     return val;
   }
   document.addEventListener('DOMContentLoaded', function(){
+    const wishGrid = document.getElementById('wish-grid');
     renderWishlist();
     updateWishlistQty();
+    if (wishGrid && !wishGrid._wishDelBound){
+      wishGrid.addEventListener('click', function(e){
+        var del = e.target.closest && e.target.closest('.wish-delete');
+        if (!del) return;
+        e.preventDefault();
+        e.stopPropagation();
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
+        const id = del.getAttribute('data-wish-remove');
+        wishlist = wishlist.filter(x=>x!==id);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        renderWishlist();
+        updateWishlistQty();
+        if (window.updateWishlistIcons) window.updateWishlistIcons();
+      });
+      wishGrid._wishDelBound = true;
+    }
     const clearBtn = document.getElementById('wishlist-clear-all');
     if(clearBtn) clearBtn.onclick = function(){
       localStorage.setItem('wishlist','[]');
       renderWishlist();
+      updateWishlistQty();
       if(window.updateWishlistIcons) window.updateWishlistIcons();
     };
   });

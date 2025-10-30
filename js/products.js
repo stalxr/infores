@@ -98,20 +98,16 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     function bindWishlistHeaderIcon() {
-      document.querySelectorAll('a, div, span, .qty, i').forEach(el => {
-        if(!el) return; 
-        let matched = false;
-        if ((el.id && el.id.includes('wishlist')) ||
-            (el.innerText && el.innerText.trim().toLowerCase().includes('избранное')) ||
-            (el.classList && (el.classList.contains('fa-heart')||el.classList.contains('fa-heart-o'))))
-            { matched = true; }
-        if (matched) {
-          el.addEventListener('click', function(e) {
-            if (el.closest('.header-ctn')) {
-              e.preventDefault();
-              window.location.href = window.location.pathname.includes('pages') ? 'wishlist.html' : 'pages/wishlist.html';
-            }
+      var headerLinks = document.querySelectorAll('.header-ctn a');
+      headerLinks.forEach(function(a){
+        var isWishlist = !!a.querySelector('.fa-heart, .fa-heart-o') || (a.textContent||'').toLowerCase().includes('избранное');
+        if (isWishlist && !a._wishBound){
+          a.addEventListener('click', function(e){
+            e.preventDefault();
+            var dest = window.location.pathname.includes('pages') ? 'wishlist.html' : 'pages/wishlist.html';
+            window.location.href = dest;
           });
+          a._wishBound = true;
         }
       });
     }

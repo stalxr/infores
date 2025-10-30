@@ -57,4 +57,8 @@ body {
 .cart-dropdown .delete { background: transparent; border: 0; color: #999; cursor: pointer; padding: 6px; }
 .cart-dropdown .delete:hover { color: #e53935; }
 
+/* Footer adjustments */
+.footer { background:#15161d; color:#fff; padding:16px 0; margin:0; border-top:1px solid #2b2f3a; }
+.footer p { margin:0; text-align:center; }
+
 

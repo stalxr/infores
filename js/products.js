@@ -41,6 +41,18 @@ document.addEventListener('DOMContentLoaded', function(){
       return id || null;
     }
 
+    function collectProductMeta(el){
+      var product = el.closest ? el.closest('.product') : null;
+      var nameEl = product ? product.querySelector('.product-name a') : null;
+      var imgEl = product ? product.querySelector('.product-img img') : null;
+      var priceEl = product ? product.querySelector('.product-price') : null;
+      return {
+        name: nameEl ? nameEl.textContent.trim() : 'Товар',
+        img: imgEl ? imgEl.getAttribute('src') : '',
+        priceText: priceEl ? priceEl.textContent.trim() : ''
+      };
+    }
+
     // КОРЗИНА (legacy demo)
     document.querySelectorAll('.add-to-cart').forEach(btn => {
         btn.addEventListener('click', function(){
@@ -89,9 +101,18 @@ document.addEventListener('DOMContentLoaded', function(){
         var id = resolveProductIdFrom(btn);
         if (!id) return;
         let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        let meta = {};
+        try { meta = JSON.parse(localStorage.getItem('wishlist_meta')||'{}'); } catch(_){}
         const idx = wishlist.indexOf(id);
-        if (idx === -1) wishlist.push(id); else wishlist.splice(idx,1);
+        if (idx === -1) {
+          wishlist.push(id);
+          meta[id] = collectProductMeta(btn);
+        } else {
+          wishlist.splice(idx,1);
+          delete meta[id];
+        }
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        localStorage.setItem('wishlist_meta', JSON.stringify(meta));
         updateWishlistIcons();
       }, false);
       document.body._wishlistBound = true;

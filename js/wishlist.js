@@ -20,6 +20,8 @@
   function renderWishlist(){
     const wishGrid = document.getElementById('wish-grid');
     let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
+    let meta = {};
+    try { meta = JSON.parse(localStorage.getItem('wishlist_meta')||'{}'); } catch(_){}
     updateWishlistQty();
     if(!wishGrid) return;
     if(!wishlist.length){
@@ -31,7 +33,29 @@
     }
     wishGrid.innerHTML = '';
     wishlist.forEach(id=>{
-      const prod = PRODUCTS.find(p=>p.id===id);
+      let prod = PRODUCTS.find(p=>p.id===id);
+      if(!prod && meta[id]){
+        // render generic card from meta
+        const m = meta[id];
+        const col = document.createElement('div');
+        col.className = 'col-md-3 col-xs-6';
+        col.innerHTML = `
+          <div class="product" data-id="${id}" style="position:relative;">
+            <button type="button" class="wish-delete" data-wish-remove="${id}" title="Удалить" style="position:absolute;right:8px;top:8px;border:0;background:#eee;color:#444;width:24px;height:24px;border-radius:50%;line-height:24px;text-align:center;cursor:pointer">×</button>
+            <div class="product-img"><img src="${m.img||''}" alt="${m.name||'Товар'}"></div>
+            <div class="product-body">
+              <p class="product-category">Избранное</p>
+              <h3 class="product-name"><a href="#">${m.name||'Товар'}</a></h3>
+              <h4 class="product-price">${m.priceText||''}</h4>
+              <div class="product-rating">${'<i class="fa fa-star"></i>'.repeat(5)}</div>
+            </div>
+            <div class="add-to-cart">
+              <button class="add-to-cart-btn" data-id="${id}" data-name="${m.name||'Товар'}" data-price="0" data-image="${m.img||''}"><i class="fa fa-shopping-cart"></i> в корзину</button>
+            </div>
+          </div>`;
+        wishGrid.appendChild(col);
+        return;
+      }
       if(!prod) return;
       const col = document.createElement('div');
       col.className = 'col-md-3 col-xs-6';
@@ -71,23 +95,31 @@
         e.preventDefault();
         e.stopPropagation();
         let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
+        let meta = {};
+        try { meta = JSON.parse(localStorage.getItem('wishlist_meta')||'{}'); } catch(_){}
         const id = del.getAttribute('data-wish-remove');
         wishlist = wishlist.filter(x=>x!==id);
+        delete meta[id];
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        localStorage.setItem('wishlist_meta', JSON.stringify(meta));
         renderWishlist();
         updateWishlistQty();
         if (window.updateWishlistIcons) window.updateWishlistIcons();
       });
-      // fallback on document level just in case
+      // fallback on document level
       document.addEventListener('click', function(e){
         if (!document.getElementById('wish-grid')) return;
         var del = e.target.closest && e.target.closest('.wish-delete');
         if (!del) return;
         e.preventDefault();
         let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
+        let meta = {};
+        try { meta = JSON.parse(localStorage.getItem('wishlist_meta')||'{}'); } catch(_){}
         const id = del.getAttribute('data-wish-remove');
         wishlist = wishlist.filter(x=>x!==id);
+        delete meta[id];
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        localStorage.setItem('wishlist_meta', JSON.stringify(meta));
         renderWishlist();
         updateWishlistQty();
         if (window.updateWishlistIcons) window.updateWishlistIcons();
@@ -97,6 +129,7 @@
     const clearBtn = document.getElementById('wishlist-clear-all');
     if(clearBtn) clearBtn.onclick = function(){
       localStorage.setItem('wishlist','[]');
+      localStorage.setItem('wishlist_meta','{}');
       renderWishlist();
       updateWishlistQty();
       if(window.updateWishlistIcons) window.updateWishlistIcons();

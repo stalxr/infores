@@ -984,14 +984,28 @@
 });</script>
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-    try {
-      var isHome = /(^|\/)index\.html$/.test(window.location.pathname) || /\/Electro-eCommerce-Website-Templates-master\/?$/.test(window.location.pathname);
-      if (!isHome) return;
-      document.querySelectorAll('.add-to-cart-btn').forEach(function(btn){
-        btn.innerHTML = '<i class="fa fa-shopping-cart"></i> Перейти в каталог';
-        btn.onclick = function(e){ e.preventDefault(); window.location.href = 'pages/store.html'; };
+    function rewriteButtons(){
+      document.querySelectorAll('.add-to-cart-btn, .add-to-cart button').forEach(function(btn){
+        if (!btn._toCatalogBound) {
+          btn.innerHTML = '<i class="fa fa-shopping-cart"></i> Перейти в каталог';
+          btn.addEventListener('click', function(e){ e.preventDefault(); window.location.href = 'pages/store.html'; });
+          btn._toCatalogBound = true;
+        } else {
+          // keep text consistent in case slick cloned nodes
+          btn.innerHTML = '<i class="fa fa-shopping-cart"></i> Перейти в каталог';
+        }
       });
-    } catch(_) {}
+    }
+    // initial
+    rewriteButtons();
+    // delayed passes to catch slick clones
+    setTimeout(rewriteButtons, 300);
+    setTimeout(rewriteButtons, 1200);
+    // observe DOM mutations (slick adds slides dynamically)
+    try {
+      var obs = new MutationObserver(function(){ rewriteButtons(); });
+      obs.observe(document.body, { childList:true, subtree:true });
+    } catch(_){}
   });
 </script>
 

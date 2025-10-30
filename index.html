@@ -992,6 +992,18 @@
     setTimeout(setCatalogButtons, 1000);
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.body.addEventListener('click', function(e){
+      var wish = e.target.closest && e.target.closest('.add-to-wishlist');
+      var cartBtn = e.target.closest && e.target.closest('.add-to-cart-btn, .add-to-cart');
+      if (!wish && !cartBtn) return;
+      // Redirect to catalog from homepage interactions
+      e.preventDefault();
+      window.location.href = 'pages/store.html';
+    });
+  });
+</script>
 
 	</body>
 </html>

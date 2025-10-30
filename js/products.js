@@ -55,6 +55,9 @@ document.addEventListener('DOMContentLoaded', function(){
       var qty = document.getElementById('wishlist-qty');
       if (qty) qty.textContent = String(wishlist.length);
     }
+    // expose globally
+    window.updateWishlistIcons = updateWishlistIcons;
+
     document.body.addEventListener('click', function(e){
       var btn = e.target.closest('.add-to-wishlist');
       if (!btn) return;

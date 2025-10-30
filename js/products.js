@@ -24,7 +24,11 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // helper to resolve stable product id
+    function isHomepage(){
+      var p = window.location.pathname;
+      return /(?:^|\/)index\.html$/.test(p) || (/^\/?$/.test(p) && !p.includes('/pages/'));
+    }
+
     function resolveProductIdFrom(el){
       var product = el.closest ? el.closest('.product') : null;
       var id = product && product.getAttribute('data-id');
@@ -96,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function(){
       document.body.addEventListener('click', function(e){
         var btn = e.target.closest && e.target.closest('.add-to-wishlist');
         if (!btn) return;
+        if (isHomepage()) return; // disable wishlist on homepage
         e.preventDefault();
         e.stopPropagation();
         var id = resolveProductIdFrom(btn);

@@ -101,43 +101,21 @@
 								<!-- /Wishlist -->
 
 								<!-- Cart -->
-								<div class="dropdown">
+                                <div class="dropdown">
 									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 										<i class="fa fa-shopping-cart"></i>
 										<span>Корзина</span>
-										<div class="qty">3</div>
+                                        <div class="qty" id="cart-qty">0</div>
 									</a>
 									<div class="cart-dropdown">
-										<div class="cart-list">
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product01.png" alt="">
-												</div>
-												<div class="product-body">
-									<h3 class="product-name"><a href="#">Ноутбук Acer Swift 3</a></h3>
-										<h4 class="product-price"><span class="qty">1x</span>₽980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-
-											<div class="product-widget">
-												<div class="product-img">
-													<img src="./img/product02.png" alt="">
-												</div>
-												<div class="product-body">
-									<h3 class="product-name"><a href="#">Смартфон Samsung Galaxy A52</a></h3>
-										<h4 class="product-price"><span class="qty">3x</span>₽980.00</h4>
-												</div>
-												<button class="delete"><i class="fa fa-close"></i></button>
-											</div>
-										</div>
+                                        <div class="cart-list" id="cart-list"></div>
 										<div class="cart-summary">
-										<small>Выбрано 3 товара</small>
-										<h5>ИТОГО: ₽2940.00</h5>
+                                        <small id="cart-items-count">0 товаров</small>
+                                        <h5>ИТОГО: <span id="cart-total">₽0.00</span></h5>
 										</div>
 										<div class="cart-btns">
-									<a href="pages/store.html">Корзина</a>
-									<a href="pages/checkout.html">Оформить заказ  <i class="fa fa-arrow-circle-right"></i></a>
+                                    <a href="pages/store.html">Корзина</a>
+                                    <a href="pages/checkout.html">Оформить заказ  <i class="fa fa-arrow-circle-right"></i></a>
 										</div>
 									</div>
 								</div>
@@ -172,12 +150,7 @@
 					<!-- NAV -->
 						<ul class="main-nav nav navbar-nav">
 							<li class="active"><a href="index.html">Главная</a></li>
-							<li><a href="pages/store.html">Горячие предложения</a></li>
-							<li><a href="pages/store.html">Категории</a></li>
-							<li><a href="pages/store.html">Ноутбуки</a></li>
-							<li><a href="pages/store.html">Смартфоны</a></li>
-							<li><a href="pages/store.html">Камеры</a></li>
-							<li><a href="pages/store.html">Аксессуары</a></li>
+							<li><a href="pages/store.html">Магазин</a></li>
 						</ul>
 					<!-- /NAV -->
 				</div>
@@ -252,14 +225,7 @@
 					<div class="col-md-12">
 						<div class="section-title">
 									<h3 class="title">Новые товары</h3>
-							<div class="section-nav">
-								<ul class="section-tab-nav tab-nav">
-										<li class="active"><a data-toggle="tab" href="#tab1">Ноутбуки</a></li>
-										<li><a data-toggle="tab" href="#tab1">Смартфоны</a></li>
-										<li><a data-toggle="tab" href="#tab1">Камеры</a></li>
-										<li><a data-toggle="tab" href="#tab1">Аксессуары</a></li>
-								</ul>
-							</div>
+                            <div class="section-nav"></div>
 						</div>
 					</div>
 					<!-- /section title -->
@@ -329,7 +295,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
 											</div>
 										</div>
 										<!-- /product -->
@@ -344,8 +310,8 @@
 											</div>
 											<div class="product-body">
                                         <p class="product-category">Категория</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
-												<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                                <h3 class="product-name"><a href="pages/product.html">Смартфон Samsung Galaxy S21 FE</a></h3>
+                                                <h4 class="product-price">₽49 990 <del class="product-old-price">₽59 990</del></h4>
 												<div class="product-rating">
 												</div>
 												<div class="product-btns">
@@ -367,7 +333,7 @@
 											</div>
 											<div class="product-body">
                                         <p class="product-category">Категория</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h3 class="product-name"><a href="pages/product.html">Ноутбук Lenovo IdeaPad 3</a></h3>
                                         <h4 class="product-price">₽98 000 <del class="product-old-price">₽99 000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -395,7 +361,7 @@
 											</div>
 											<div class="product-body">
                                         <p class="product-category">Категория</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h3 class="product-name"><a href="pages/product.html">Ноутбук ASUS VivoBook 15</a></h3>
                                         <h4 class="product-price">₽98 000 <del class="product-old-price">₽99 000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -411,7 +377,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
 											</div>
 										</div>
 										<!-- /product -->
@@ -485,17 +451,9 @@
 
 					<!-- section title -->
 					<div class="col-md-12">
-						<div class="section-title">
-									<h3 class="title">Хиты продаж</h3>
-							<div class="section-nav">
-								<ul class="section-tab-nav tab-nav">
-										<li class="active"><a data-toggle="tab" href="#tab2">Ноутбуки</a></li>
-										<li><a data-toggle="tab" href="#tab2">Смартфоны</a></li>
-										<li><a data-toggle="tab" href="#tab2">Камеры</a></li>
-										<li><a data-toggle="tab" href="#tab2">Аксессуары</a></li>
-								</ul>
-							</div>
-						</div>
+                        <div class="section-title">
+                            <h3 class="title">Хиты продаж</h3>
+                        </div>
 					</div>
 					<!-- /section title -->
 
@@ -533,7 +491,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
 											</div>
 										</div>
 										<!-- /product -->
@@ -564,7 +522,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
 											</div>
 										</div>
 										<!-- /product -->
@@ -590,7 +548,7 @@
 												</div>
 											</div>
 											<div class="add-to-cart">
-												<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> в корзину</button>
 											</div>
 										</div>
 										<!-- /product -->
@@ -630,7 +588,7 @@
 											</div>
 											<div class="product-body">
                                         <p class="product-category">Категория</p>
-												<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                                <h3 class="product-name"><a href="pages/product.html">Ноутбук HP Victus 16</a></h3>
                                         <h4 class="product-price">₽98 000 <del class="product-old-price">₽99 000</del></h4>
 												<div class="product-rating">
 													<i class="fa fa-star"></i>
@@ -713,8 +671,8 @@
 										<img src="./img/product09.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <p class="product-category">Смартфоны</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Смартфон Realme 11 Pro</a></h3>
 										<h4 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h4>
 									</div>
 								</div>
@@ -728,8 +686,8 @@
 										<img src="./img/product01.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <p class="product-category">Смартфоны</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Смартфон Google Pixel 7a</a></h3>
 										<h4 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h4>
 									</div>
 								</div>
@@ -741,8 +699,8 @@
 										<img src="./img/product02.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <p class="product-category">Ноутбуки</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Ноутбук Acer Aspire 7</a></h3>
 										<h4 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h4>
 									</div>
 								</div>
@@ -754,8 +712,8 @@
 										<img src="./img/product03.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
+                                        <p class="product-category">Камеры</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Камера Sony Alpha A6400</a></h3>
 										<h4 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h4>
 									</div>
 								</div>
@@ -847,9 +805,9 @@
 										<img src="./img/product09.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">Ноутбуки</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Ноутбук MSI Modern 15</a></h3>
+                                        <h4 class="product-price">₽85 990 <del class="product-old-price">₽92 990</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -875,9 +833,9 @@
 										<img src="./img/product01.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">Наушники</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Наушники Sony WH‑1000XM4</a></h3>
+                                        <h4 class="product-price">₽32 990 <del class="product-old-price">₽36 990</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -888,9 +846,9 @@
 										<img src="./img/product02.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">Камеры</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Камера Nikon Z30</a></h3>
+                                        <h4 class="product-price">₽67 990 <del class="product-old-price">₽74 990</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -901,9 +859,9 @@
 										<img src="./img/product03.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">Смартфоны</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Смартфон OnePlus Nord 3</a></h3>
+                                        <h4 class="product-price">₽41 990 <del class="product-old-price">₽45 990</del></h4>
 									</div>
 								</div>
 								<!-- product widget -->
@@ -916,9 +874,9 @@
 										<img src="./img/product04.png" alt="">
 									</div>
 									<div class="product-body">
-										<p class="product-category">Category</p>
-										<h3 class="product-name"><a href="#">product name goes here</a></h3>
-										<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                        <p class="product-category">Ноутбуки</p>
+                                        <h3 class="product-name"><a href="pages/product.html">Ноутбук Dell Inspiron 3511</a></h3>
+                                        <h4 class="product-price">₽62 990 <del class="product-old-price">₽69 990</del></h4>
 									</div>
 								</div>
 								<!-- /product widget -->
@@ -1004,15 +962,15 @@
 					<!-- row -->
 					<div class="row">
 						<div class="col-md-3 col-xs-6">
-							<div class="footer">
-								<h3 class="footer-title">О нас</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
-								<ul class="footer-links">
-									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
-								</ul>
-							</div>
+                            <div class="footer">
+                                <h3 class="footer-title">О нас</h3>
+                                <p>Интернет‑магазин электроники. Поддержка и гарантия.</p>
+                                <ul class="footer-links">
+                                    <li><a href="#"><i class="fa fa-map-marker"></i>г. Москва, ул. Тверская, 1</a></li>
+                                    <li><a href="#"><i class="fa fa-phone"></i>+7 (999) 123-45-67</a></li>
+                                    <li><a href="#"><i class="fa fa-envelope-o"></i>info@example.ru</a></li>
+                                </ul>
+                            </div>
 						</div>
 
 						<div class="col-md-3 col-xs-6">

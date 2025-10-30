@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Избранное — Electro</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/custom-ru.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title"><h3 class="title">Избранное</h3></div>
+          </div>
+          <div class="col-md-12">
+            <div id="wish-grid" class="row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script>
+      (function(){
+        'use strict';
+        function read(){ try {return JSON.parse(localStorage.getItem('electro_wishlist'))||[];} catch(e){return [];} }
+        function card(it){
+          return '<div class="col-md-3 col-xs-6">\
+            <div class="product">\
+              <div class="product-img"><img src="'+(it.image||'../img/product01.png')+'" alt=""></div>\
+              <div class="product-body">\
+                <h3 class="product-name"><a href="#">'+(it.name||'Товар')+'</a></h3>\
+                <h4 class="product-price">'+(it.priceTxt||'')+'</h4>\
+              </div>\
+            </div>\
+          </div>';
+        }
+        function render(){
+          var ids = read();
+          var map = {};
+          document.querySelectorAll('.product').forEach(function(p){
+            var id = p.getAttribute('data-id') || p.querySelector('.add-to-cart-btn')?.getAttribute('data-id');
+            if (!id) return;
+            var img = p.querySelector('.product-img img')?.getAttribute('src') || '';
+            var name = p.querySelector('.product-name a')?.textContent.trim() || 'Товар';
+            var priceTxt = p.querySelector('.product-price')?.textContent || '';
+            map[id] = { id:id, image:img, name:name, priceTxt:priceTxt };
+          });
+          var grid = document.getElementById('wish-grid');
+          grid.innerHTML = ids.map(function(id){ return card(map[id]||{id:id}); }).join('') || '<p>Избранных товаров пока нет</p>';
+        }
+        render();
+      })();
+    </script>
+  </body>
+  </html>
+
+

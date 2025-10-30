@@ -35,6 +35,9 @@
     register: function (name, email, password) {
       var user = { name: name, email: email };
       setUser(user);
+      // Очистим корзину/избранное при регистрации
+      try { localStorage.removeItem('electro_cart'); } catch(e) {}
+      try { localStorage.removeItem('electro_wishlist'); } catch(e) {}
       return true;
     },
     logout: function () {

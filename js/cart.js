@@ -53,6 +53,15 @@
     document.body.addEventListener('click', function(e){
       var btn = e.target.closest('.add-to-cart-btn');
       if (!btn) return;
+      // Гейт: только после регистрации
+      try {
+        var user = JSON.parse(localStorage.getItem('electro_user')||'null');
+        if (!user){
+          alert('Для добавления в корзину войдите или зарегистрируйтесь');
+          window.location.href = 'pages/auth.html';
+          return;
+        }
+      } catch(_) {}
       var product = btn.closest('.product');
       var id = btn.getAttribute('data-id');
       var name = btn.getAttribute('data-name');

@@ -66,4 +66,6 @@ body {
 .add-to-wishlist i { transition: color .15s ease; }
 .add-to-wishlist.added i, .add-to-wishlist i.fa-heart { color: #e53935; }
 
+.wish-delete { z-index: 3; }
+
 

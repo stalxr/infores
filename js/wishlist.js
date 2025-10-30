@@ -37,7 +37,7 @@
       col.className = 'col-md-3 col-xs-6';
       col.innerHTML = `
         <div class="product" data-id="${prod.id}" data-category="${prod.category}" data-brand="${prod.brand}" data-price="${prod.price}" style="position:relative;">
-          <button class="wish-delete" data-wish-remove="${prod.id}" title="Удалить" style="position:absolute;right:8px;top:8px;border:0;background:#eee;color:#444;width:24px;height:24px;border-radius:50%;line-height:24px;text-align:center;cursor:pointer">×</button>
+          <button type="button" class="wish-delete" data-wish-remove="${prod.id}" title="Удалить" style="position:absolute;right:8px;top:8px;border:0;background:#eee;color:#444;width:24px;height:24px;border-radius:50%;line-height:24px;text-align:center;cursor:pointer">×</button>
           <div class="product-img"><img src="${prod.img}" alt="${prod.name}"></div>
           <div class="product-body">
             <p class="product-category">${categoryName(prod.category)}</p>
@@ -78,6 +78,20 @@
         updateWishlistQty();
         if (window.updateWishlistIcons) window.updateWishlistIcons();
       });
+      // fallback on document level just in case
+      document.addEventListener('click', function(e){
+        if (!document.getElementById('wish-grid')) return;
+        var del = e.target.closest && e.target.closest('.wish-delete');
+        if (!del) return;
+        e.preventDefault();
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')||'[]');
+        const id = del.getAttribute('data-wish-remove');
+        wishlist = wishlist.filter(x=>x!==id);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        renderWishlist();
+        updateWishlistQty();
+        if (window.updateWishlistIcons) window.updateWishlistIcons();
+      }, false);
       wishGrid._wishDelBound = true;
     }
     const clearBtn = document.getElementById('wishlist-clear-all');

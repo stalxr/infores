@@ -1,0 +1,18 @@
+/* Russian localization minor overrides */
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Make CTA buttons slightly bolder for RU */
+.cta-btn,
+.add-to-cart-btn,
+.primary-btn {
+  font-weight: 600;
+}
+
+/* Shorter newsletter placeholder width for RU */
+#newsletter .input[type="email"]::placeholder {
+  opacity: 0.9;
+}
+
+

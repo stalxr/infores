@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Electro — Карточка товара</title>
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/slick.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/slick-theme.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/nouislider.min.css"/>
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
+		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/custom-ru.css"/>
+	</head>
+	<body>
+		<header>
+			<div id="top-header">
+				<div class="container">
+					<ul class="header-links pull-left">
+						<li><a href="#"><i class="fa fa-phone"></i> +7 (999) 123-45-67</a></li>
+						<li><a href="#"><i class="fa fa-envelope-o"></i> info@example.ru</a></li>
+						<li><a href="#"><i class="fa fa-map-marker"></i> г. Москва, ул. Тверская, 1</a></li>
+					</ul>
+					<ul class="header-links pull-right">
+						<li><a href="#"><i class="fa fa-rub"></i> RUB</a></li>
+						<li><a href="auth.html" data-role="account"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+					</ul>
+				</div>
+			</div>
+			<div id="header">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="header-logo">
+								<a href="#" class="logo">
+									<img src="../img/logo.png" alt="">
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="header-search">
+								<form>
+									<select class="input-select">
+										<option value="0">Все категории</option>
+										<option value="1">Категория 01</option>
+										<option value="1">Категория 02</option>
+									</select>
+									<input class="input" placeholder="Искать здесь">
+									<button class="search-btn">Поиск</button>
+								</form>
+							</div>
+						</div>
+						<div class="col-md-3 clearfix">
+							<div class="header-ctn">
+								<div>
+									<a href="#">
+										<i class="fa fa-heart-o"></i>
+										<span>Избранное</span>
+										<div class="qty">0</div>
+									</a>
+								</div>
+								<div class="dropdown">
+									<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+										<i class="fa fa-shopping-cart"></i>
+										<span>Корзина</span>
+										<div class="qty" id="cart-qty">0</div>
+									</a>
+									<div class="cart-dropdown" id="cart-dropdown">
+										<div class="cart-list" id="cart-list"></div>
+										<div class="cart-summary">
+											<small id="cart-items-count">0 товаров</small>
+											<h5>ИТОГО: <span id="cart-total">₽0.00</span></h5>
+										</div>
+										<div class="cart-btns">
+											<a href="store.html">Корзина</a>
+											<a href="checkout.html">Оформить заказ  <i class="fa fa-arrow-circle-right"></i></a>
+										</div>
+									</div>
+								</div>
+								<div class="menu-toggle">
+									<a href="#">
+										<i class="fa fa-bars"></i>
+										<span>Меню</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<nav id="navigation">
+			<div class="container">
+				<div id="responsive-nav">
+					<ul class="main-nav nav navbar-nav">
+						<li class="active"><a href="../index.html">Главная</a></li>
+						<li><a href="store.html">Горячие предложения</a></li>
+						<li><a href="store.html">Категории</a></li>
+						<li><a href="store.html">Ноутбуки</a></li>
+						<li><a href="store.html">Смартфоны</a></li>
+						<li><a href="store.html">Камеры</a></li>
+						<li><a href="store.html">Аксессуары</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<!-- Упростим карточку: одна картинка и инфо -->
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<img src="../img/product01.png" alt="" style="max-width:100%">
+					</div>
+					<div class="col-md-6">
+						<h2 class="product-name">Название товара</h2>
+						<h3 class="product-price">₽980.00 <del class="product-old-price">₽990.00</del></h3>
+						<p>Описание товара: качественная электроника с гарантией и поддержкой.</p>
+						<div class="add-to-cart">
+							<button class="add-to-cart-btn" data-id="p1" data-name="Название товара" data-price="980" data-image="../img/product01.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<footer id="footer">
+			<div class="section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">О нас</h3>
+								<p>Интернет‑магазин электроники. Поддержка и гарантия.</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>г. Москва, ул. Тверская, 1</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+7 (999) 123-45-67</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>info@example.ru</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Категории</h3>
+								<ul class="footer-links">
+									<li><a href="store.html">Горячие предложения</a></li>
+									<li><a href="store.html">Ноутбуки</a></li>
+									<li><a href="store.html">Смартфоны</a></li>
+									<li><a href="store.html">Камеры</a></li>
+									<li><a href="store.html">Аксессуары</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Информация</h3>
+								<ul class="footer-links">
+									<li><a href="#">О нас</a></li>
+									<li><a href="#">Контакты</a></li>
+									<li><a href="#">Политика конфиденциальности</a></li>
+									<li><a href="#">Заказы и возвраты</a></li>
+									<li><a href="#">Условия использования</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-3 col-xs-6">
+							<div class="footer">
+								<h3 class="footer-title">Сервис</h3>
+								<ul class="footer-links">
+									<li><a href="auth.html">Мой аккаунт</a></li>
+									<li><a href="store.html">Корзина</a></li>
+									<li><a href="#">Избранное</a></li>
+									<li><a href="#">Отследить заказ</a></li>
+									<li><a href="#">Помощь</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+						<span class="copyright">
+							<a href="https://templatespoint.net" target="_blank">TemplatesPoint</a>
+						</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<script src="../js/jquery.min.js"></script>
+		<script src="../js/bootstrap.min.js"></script>
+		<script src="../js/slick.min.js"></script>
+		<script src="../js/nouislider.min.js"></script>
+		<script src="../js/jquery.zoom.min.js"></script>
+		<script src="../js/main.js"></script>
+		<script src="../js/auth.js"></script>
+		<script src="../js/cart.js"></script>
+	</body>
+</html>
+
+

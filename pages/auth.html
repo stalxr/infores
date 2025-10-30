@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Electro — Регистрация</title>
+		<title>Electro — Регистрация / Вход</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
 		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
@@ -17,8 +17,9 @@
 				<div class="row">
 					<div class="col-md-6 col-md-offset-3">
 						<div class="section-title text-center">
-							<h3 class="title">Регистрация</h3>
+							<h3 class="title" id="auth-title">Регистрация</h3>
 						</div>
+
 						<form id="register-form">
 							<div class="form-group">
 								<input class="input" type="text" id="name" placeholder="Имя" required>
@@ -29,9 +30,22 @@
 							<div class="form-group">
 								<input class="input" type="password" id="password" placeholder="Пароль" required>
 							</div>
-							<button class="primary-btn" type="submit">Создать аккаунт</button>
+							<button class="primary-btn" type="submit" style="width:100%">Создать аккаунт</button>
 						</form>
-						<p style="margin-top:15px;">Уже есть аккаунт? <a href="../index.html">На главную</a></p>
+
+						<form id="login-form" style="display:none;">
+							<div class="form-group">
+								<input class="input" type="email" id="login-email" placeholder="E-mail" required>
+							</div>
+							<div class="form-group">
+								<input class="input" type="password" id="login-password" placeholder="Пароль" required>
+							</div>
+							<button class="primary-btn" type="submit" style="width:100%">Войти</button>
+						</form>
+
+						<p style="margin-top:15px;" id="auth-toggle">
+							Уже есть аккаунт? <a href="#" id="to-login">Войти</a>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -41,18 +55,50 @@
 		<script src="../js/bootstrap.min.js"></script>
 		<script src="../js/auth.js"></script>
 		<script>
-		  document.getElementById('register-form').addEventListener('submit', function(e){
-		    e.preventDefault();
-		    var name = document.getElementById('name').value.trim();
-		    var email = document.getElementById('email').value.trim();
-		    var password = document.getElementById('password').value;
-		    if (!name || !email || password.length < 4) {
-		      alert('Пожалуйста, заполните все поля. Пароль не короче 4 символов.');
-		      return;
+		  (function(){
+		    var reg = document.getElementById('register-form');
+		    var log = document.getElementById('login-form');
+		    var title = document.getElementById('auth-title');
+		    var toggle = document.getElementById('auth-toggle');
+		    var toLogin = document.getElementById('to-login');
+
+		    function showLogin(){
+		      reg.style.display='none';
+		      log.style.display='block';
+		      title.textContent='Вход';
+		      toggle.innerHTML='Нет аккаунта? <a href="#" id="to-register">Зарегистрироваться</a>';
 		    }
-		    window.ElectroAuth.register(name, email, password);
-		    window.location.href = '../index.html';
-		  });
+		    function showRegister(){
+		      reg.style.display='block';
+		      log.style.display='none';
+		      title.textContent='Регистрация';
+		      toggle.innerHTML='Уже есть аккаунт? <a href="#" id="to-login">Войти</a>';
+		    }
+
+		    document.body.addEventListener('click', function(e){
+		      if (e.target && e.target.id==='to-login'){ e.preventDefault(); showLogin(); }
+		      if (e.target && e.target.id==='to-register'){ e.preventDefault(); showRegister(); }
+		    });
+
+		    reg.addEventListener('submit', function(e){
+		      e.preventDefault();
+		      var name = document.getElementById('name').value.trim();
+		      var email = document.getElementById('email').value.trim();
+		      var password = document.getElementById('password').value;
+		      if (!name || !email || password.length < 4) { alert('Пожалуйста, заполните все поля. Пароль не короче 4 символов.'); return; }
+		      window.ElectroAuth.register(name, email, password);
+		      window.location.href = '../index.html';
+		    });
+		    log.addEventListener('submit', function(e){
+		      e.preventDefault();
+		      var email = document.getElementById('login-email').value.trim();
+		      var password = document.getElementById('login-password').value;
+		      if (!email || password.length < 4) { alert('Неверные данные'); return; }
+		      var user = { name: email.split('@')[0], email: email };
+		      localStorage.setItem('electro_user', JSON.stringify(user));
+		      window.location.href = '../index.html';
+		    });
+		  })();
 		</script>
 	</body>
 </html>

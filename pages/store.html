@@ -34,7 +34,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="../index.html" class="logo">
 									<img src="../img/logo.png" alt="">
 								</a>
 							</div>
@@ -55,7 +55,7 @@
 						<div class="col-md-3 clearfix">
 							<div class="header-ctn">
 								<div>
-									<a href="#">
+									<a href="wishlist.html">
 										<i class="fa fa-heart-o"></i>
 										<span>Избранное</span>
 										<div class="qty">0</div>
@@ -97,14 +97,7 @@
 				<div id="responsive-nav">
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="../index.html">Главная</a></li>
-						<li><a href="#">Категории</a>
-							<ul>
-								<li><a href="store.html#laptops">Ноутбуки</a></li>
-								<li><a href="store.html#smartphones">Смартфоны</a></li>
-								<li><a href="store.html#cameras">Камеры</a></li>
-								<li><a href="store.html#accessories">Аксессуары</a></li>
-							</ul>
-						</li>
+						<li><a href="#store">Каталог</a></li>
 					</ul>
 				</div>
 			</div>
@@ -153,6 +146,11 @@
 									<span class="qty-up">+</span>
 									<span class="qty-down">-</span>
 								</div>
+								<input id="search-name" type="text" placeholder="Поиск по названию" style="margin-top:10px;width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:6px;">
+								<div style="margin-top:12px;display:flex;gap:8px;">
+									<button id="filter-apply-btn" class="btn btn-primary" style="min-width:96px;">Найти</button>
+									<button id="filter-reset-btn" class="btn btn-default" style="min-width:110px;">Сбросить фильтры</button>
+								</div>
 							</div>
 						</div>
 
@@ -191,29 +189,447 @@
 
 						<div class="row" id="products-grid">
 							<!-- Ноутбуки -->
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product01.png" alt="ASUS Zenbook 14 OLED"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">ASUS Zenbook 14 OLED</a></h3><h4 class="product-price">119 990 ₽</h4><button class="add-to-cart" data-id="laptop1">В корзину</button><button class="add-to-wishlist" data-id="laptop1">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product02.png" alt="Dell Inspiron 15"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">Dell Inspiron 15</a></h3><h4 class="product-price">87 600 ₽</h4><button class="add-to-cart" data-id="laptop2">В корзину</button><button class="add-to-wishlist" data-id="laptop2">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product03.png" alt="MSI Modern 14"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">MSI Modern 14</a></h3><h4 class="product-price">68 100 ₽</h4><button class="add-to-cart" data-id="laptop3">В корзину</button><button class="add-to-wishlist" data-id="laptop3">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product04.png" alt="Apple MacBook Air 13"><p class="product-category">Ноутбуки</p><h3 class="product-name"><a href="product.html">Apple MacBook Air 13"</a></h3><h4 class="product-price">99 900 ₽</h4><button class="add-to-cart" data-id="laptop4">В корзину</button><button class="add-to-wishlist" data-id="laptop4">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="laptop1" data-category="laptop" data-brand="asus" data-price="119990">
+									<div class="product-img">
+										<img src="../img/product01.png" alt="ASUS Zenbook 14 OLED">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Ноутбуки</p>
+										<h3 class="product-name"><a href="#">ASUS Zenbook 14 OLED</a></h3>
+										<h4 class="product-price">119 990 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="laptop1" data-name="ASUS Zenbook 14 OLED" data-price="119990" data-image="../img/product01.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="laptop2" data-category="laptop" data-brand="dell" data-price="87600">
+									<div class="product-img">
+										<img src="../img/product02.png" alt="Dell Inspiron 15">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Ноутбуки</p>
+										<h3 class="product-name"><a href="#">Dell Inspiron 15</a></h3>
+										<h4 class="product-price">87 600 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="laptop2" data-name="Dell Inspiron 15" data-price="87600" data-image="../img/product02.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="laptop3" data-category="laptop" data-brand="msi" data-price="68100">
+									<div class="product-img">
+										<img src="../img/product03.png" alt="MSI Modern 14">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Ноутбуки</p>
+										<h3 class="product-name"><a href="#">MSI Modern 14</a></h3>
+										<h4 class="product-price">68 100 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="laptop3" data-name="MSI Modern 14" data-price="68100" data-image="../img/product03.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="laptop4" data-category="laptop" data-brand="apple" data-price="99900">
+									<div class="product-img">
+										<img src="../img/product04.png" alt="Apple MacBook Air 13">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Ноутбуки</p>
+										<h3 class="product-name"><a href="#">Apple MacBook Air 13"</a></h3>
+										<h4 class="product-price">99 900 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="laptop4" data-name="Apple MacBook Air 13" data-price="99900" data-image="../img/product04.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
 
 							<!-- Смартфоны -->
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product05.png" alt="Samsung Galaxy S24"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Samsung Galaxy S24</a></h3><h4 class="product-price">79 990 ₽</h4><button class="add-to-cart" data-id="smart1">В корзину</button><button class="add-to-wishlist" data-id="smart1">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product06.png" alt="Realme 11 Pro"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Realme 11 Pro</a></h3><h4 class="product-price">45 500 ₽</h4><button class="add-to-cart" data-id="smart2">В корзину</button><button class="add-to-wishlist" data-id="smart2">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product07.png" alt="Xiaomi 14 Pro"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Xiaomi 14 Pro</a></h3><h4 class="product-price">59 870 ₽</h4><button class="add-to-cart" data-id="smart3">В корзину</button><button class="add-to-wishlist" data-id="smart3">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product08.png" alt="Honor 90 Lite"><p class="product-category">Смартфоны</p><h3 class="product-name"><a href="product.html">Honor 90 Lite</a></h3><h4 class="product-price">29 990 ₽</h4><button class="add-to-cart" data-id="smart4">В корзину</button><button class="add-to-wishlist" data-id="smart4">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="smart1" data-category="smartphone" data-brand="samsung" data-price="79990">
+									<div class="product-img">
+										<img src="../img/product05.png" alt="Samsung Galaxy S24">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Смартфоны</p>
+										<h3 class="product-name"><a href="#">Samsung Galaxy S24</a></h3>
+										<h4 class="product-price">79 990 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="smart1" data-name="Samsung Galaxy S24" data-price="79990" data-image="../img/product05.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="smart2" data-category="smartphone" data-brand="realme" data-price="45500">
+									<div class="product-img">
+										<img src="../img/product06.png" alt="Realme 11 Pro">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Смартфоны</p>
+										<h3 class="product-name"><a href="#">Realme 11 Pro</a></h3>
+										<h4 class="product-price">45 500 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="smart2" data-name="Realme 11 Pro" data-price="45500" data-image="../img/product06.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="smart3" data-category="smartphone" data-brand="xiaomi" data-price="59870">
+									<div class="product-img">
+										<img src="../img/product07.png" alt="Xiaomi 14 Pro">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Смартфоны</p>
+										<h3 class="product-name"><a href="#">Xiaomi 14 Pro</a></h3>
+										<h4 class="product-price">59 870 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="smart3" data-name="Xiaomi 14 Pro" data-price="59870" data-image="../img/product07.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="smart4" data-category="smartphone" data-brand="honor" data-price="29990">
+									<div class="product-img">
+										<img src="../img/product08.png" alt="Honor 90 Lite">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Смартфоны</p>
+										<h3 class="product-name"><a href="#">Honor 90 Lite</a></h3>
+										<h4 class="product-price">29 990 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="smart4" data-name="Honor 90 Lite" data-price="29990" data-image="../img/product08.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
 
 							<!-- Камеры -->
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product09.png" alt="Canon EOS R50"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Canon EOS R50</a></h3><h4 class="product-price">89 800 ₽</h4><button class="add-to-cart" data-id="camera1">В корзину</button><button class="add-to-wishlist" data-id="camera1">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product01.png" alt="Sony ZV-E10"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Sony ZV-E10</a></h3><h4 class="product-price">62 910 ₽</h4><button class="add-to-cart" data-id="camera2">В корзину</button><button class="add-to-wishlist" data-id="camera2">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product02.png" alt="Nikon Z30"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Nikon Z30</a></h3><h4 class="product-price">71 340 ₽</h4><button class="add-to-cart" data-id="camera3">В корзину</button><button class="add-to-wishlist" data-id="camera3">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product03.png" alt="Panasonic Lumix G7"><p class="product-category">Камеры</p><h3 class="product-name"><a href="product.html">Panasonic Lumix G7</a></h3><h4 class="product-price">61 500 ₽</h4><button class="add-to-cart" data-id="camera4">В корзину</button><button class="add-to-wishlist" data-id="camera4">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="camera1" data-category="camera" data-brand="canon" data-price="89800">
+									<div class="product-img">
+										<img src="../img/product09.png" alt="Canon EOS R50">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Камеры</p>
+										<h3 class="product-name"><a href="#">Canon EOS R50</a></h3>
+										<h4 class="product-price">89 800 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="camera1" data-name="Canon EOS R50" data-price="89800" data-image="../img/product09.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="camera2" data-category="camera" data-brand="sony" data-price="62910">
+									<div class="product-img">
+										<img src="../img/product01.png" alt="Sony ZV-E10">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Камеры</p>
+										<h3 class="product-name"><a href="#">Sony ZV-E10</a></h3>
+										<h4 class="product-price">62 910 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="camera2" data-name="Sony ZV-E10" data-price="62910" data-image="../img/product01.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="camera3" data-category="camera" data-brand="nikon" data-price="71340">
+									<div class="product-img">
+										<img src="../img/product02.png" alt="Nikon Z30">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Камеры</p>
+										<h3 class="product-name"><a href="#">Nikon Z30</a></h3>
+										<h4 class="product-price">71 340 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="camera3" data-name="Nikon Z30" data-price="71340" data-image="../img/product02.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="camera4" data-category="camera" data-brand="panasonic" data-price="61500">
+									<div class="product-img">
+										<img src="../img/product03.png" alt="Panasonic Lumix G7">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Камеры</p>
+										<h3 class="product-name"><a href="#">Panasonic Lumix G7</a></h3>
+										<h4 class="product-price">61 500 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="camera4" data-name="Panasonic Lumix G7" data-price="61500" data-image="../img/product03.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
 
 							<!-- Аксессуары -->
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product04.png" alt="Мышь Logitech M650"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Мышь Logitech M650</a></h3><h4 class="product-price">2 480 ₽</h4><button class="add-to-cart" data-id="acc1">В корзину</button><button class="add-to-wishlist" data-id="acc1">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product05.png" alt="Клавиатура Redragon Shiva"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Клавиатура Redragon Shiva</a></h3><h4 class="product-price">3 990 ₽</h4><button class="add-to-cart" data-id="acc2">В корзину</button><button class="add-to-wishlist" data-id="acc2">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product06.png" alt="Наушники Sony WH-CH520"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Наушники Sony WH-CH520</a></h3><h4 class="product-price">6 500 ₽</h4><button class="add-to-cart" data-id="acc3">В корзину</button><button class="add-to-wishlist" data-id="acc3">В избранное</button></div></div>
-							<div class="col-md-3 col-xs-6"><div class="product-card"><img src="../img/product07.png" alt="Колонка JBL Go 3"><p class="product-category">Аксессуары</p><h3 class="product-name"><a href="product.html">Колонка JBL Go 3</a></h3><h4 class="product-price">3 799 ₽</h4><button class="add-to-cart" data-id="acc4">В корзину</button><button class="add-to-wishlist" data-id="acc4">В избранное</button></div></div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="acc1" data-category="accessory" data-brand="logitech" data-price="2480">
+									<div class="product-img">
+										<img src="../img/product04.png" alt="Мышь Logitech M650">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Аксессуары</p>
+										<h3 class="product-name"><a href="#">Мышь Logitech M650</a></h3>
+										<h4 class="product-price">2 480 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="acc1" data-name="Мышь Logitech M650" data-price="2480" data-image="../img/product04.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="acc2" data-category="accessory" data-brand="redragon" data-price="3990">
+									<div class="product-img">
+										<img src="../img/product05.png" alt="Клавиатура Redragon Shiva">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Аксессуары</p>
+										<h3 class="product-name"><a href="#">Клавиатура Redragon Shiva</a></h3>
+										<h4 class="product-price">3 990 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="acc2" data-name="Клавиатура Redragon Shiva" data-price="3990" data-image="../img/product05.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="acc3" data-category="accessory" data-brand="sony" data-price="6500">
+									<div class="product-img">
+										<img src="../img/product06.png" alt="Наушники Sony WH-CH520">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Аксессуары</p>
+										<h3 class="product-name"><a href="#">Наушники Sony WH-CH520</a></h3>
+										<h4 class="product-price">6 500 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="acc3" data-name="Наушники Sony WH-CH520" data-price="6500" data-image="../img/product06.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-3 col-xs-6">
+								<div class="product" data-id="acc4" data-category="accessory" data-brand="jbl" data-price="3799">
+									<div class="product-img">
+										<img src="../img/product07.png" alt="Колонка JBL Go 3">
+									</div>
+									<div class="product-body">
+										<p class="product-category">Аксессуары</p>
+										<h3 class="product-name"><a href="#">Колонка JBL Go 3</a></h3>
+										<h4 class="product-price">3 799 ₽</h4>
+										<div class="product-rating">
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="product-btns">
+											<button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
+											<button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">сравнить</span></button>
+											<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
+										</div>
+									</div>
+									<div class="add-to-cart">
+										<button class="add-to-cart-btn" data-id="acc4" data-name="Колонка JBL Go 3" data-price="3799" data-image="../img/product07.png"><i class="fa fa-shopping-cart"></i> в корзину</button>
+									</div>
+								</div>
+							</div>
 						</div>
+						<!-- Блок пагинации -->
+						<div id="pagination" class="text-center" style="margin:24px 0;"></div>
 					</div>
 				</div>
 			</div>
@@ -253,6 +669,7 @@
 		<script src="../js/cart.js"></script>
 		<script src="../js/wishlist.js"></script>
 		<script src="../js/store.js"></script>
+		<script src="../js/products.js"></script>
 		<script src="../js/ui.js"></script>
 	</body>
 </html>

@@ -15,4 +15,43 @@ body {
   opacity: 0.9;
 }
 
+.row {align-items:stretch;}
+.col-md-3.col-xs-6 {display:flex;}
+.product {display:flex; flex-direction:column; height:100%; min-height:420px;}
+.product-body {flex:1 1 auto; min-height:185px;}
+.add-to-cart {margin-top:auto;}
+
+/* Hide compare buttons everywhere */
+.add-to-compare { display: none !important; }
+
+/* Compact Toasts */
+.toast-notify { display: none !important; }
+.toast-notify.is-success, .toast-notify.is-danger, .toast-notify .emoji { display: none !important; }
+@keyframes toast-in { }
+@keyframes toast-out { }
+
+/* Very small minimal toast */
+.toast-mini {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  background: rgba(33,33,33,0.95);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.1;
+  font-weight: 600;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: toast-mini-in 120ms ease-out forwards, toast-mini-out 200ms ease-in 1500ms forwards;
+}
+@keyframes toast-mini-in { to { opacity: 1; transform: translateY(0); } }
+@keyframes toast-mini-out { to { opacity: 0; transform: translateY(8px); } }
+
+/* Cart delete button */
+.cart-dropdown .delete { background: transparent; border: 0; color: #999; cursor: pointer; padding: 6px; }
+.cart-dropdown .delete:hover { color: #e53935; }
+
 

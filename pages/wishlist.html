@@ -12,30 +12,83 @@
 </head>
 <body>
 <header>
-  <nav class="main-navbar">
-    <ul class="navbar-menu">
-      <li><a href="../index.html">Главная</a></li>
-      <li class="dropdown">
-        <a href="#">Категории</a>
-        <ul class="dropdown-content">
-            <li><a href="store.html#laptops">Ноутбуки</a></li>
-            <li><a href="store.html#smartphones">Смартфоны</a></li>
-            <li><a href="store.html#cameras">Камеры</a></li>
-            <li><a href="store.html#accessories">Аксессуары</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</header>
-<main>
-  <div class="container">
-    <h1>Избранное</h1>
-    <div id="wish-grid" class="row"></div>
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> +7 (999) 123-45-67</a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> info@example.ru</a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> г. Москва, ул. Тверская, 1</a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-rub"></i> RUB</a></li>
+        <li><a href="auth.html" data-role="account"><i class="fa fa-user-o"></i> Мой аккаунт</a></li>
+      </ul>
+    </div>
   </div>
-</main>
+  <div id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a href="../index.html" class="logo">
+              <img src="../img/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <div>
+              <a href="wishlist.html">
+                <i class="fa fa-heart-o"></i>
+                <span>Избранное</span>
+                <div class="qty" id="wishlist-qty">0</div>
+              </a>
+            </div>
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Корзина</span>
+                <div class="qty" id="cart-qty">0</div>
+              </a>
+            </div>
+            <div class="menu-toggle">
+              <a href="#">
+                <i class="fa fa-bars"></i>
+                <span>Меню</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<nav id="navigation">
+  <div class="container">
+    <div id="responsive-nav">
+      <ul class="main-nav nav navbar-nav">
+        <li><a href="../index.html">Главная</a></li>
+        <li><a href="store.html">Каталог</a></li>
+        <li class="active"><a href="wishlist.html"><i class="fa fa-heart-o"></i> Избранное</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center" style="margin-bottom:16px;">
+        <a href="store.html" class="btn btn-default" style="margin-right:8px;"><i class="fa fa-arrow-left"></i> В каталог</a>
+        <button id="wishlist-clear-all" class="btn btn-danger"><i class="fa fa-trash"></i> Очистить всё избранное</button>
+      </div>
+      <div id="wish-grid" class="row"></div>
+    </div>
+  </div>
+</div>
 <footer class="footer"><p>© 2025 Infores. Все права защищены.</p></footer>
-<!-- FIXED -->
 <script src="../js/wishlist.js"></script>
+<script src="../js/products.js"></script>
 </body>
 </html>
 

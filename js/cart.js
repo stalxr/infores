@@ -43,25 +43,41 @@
           '<h3 class="product-name"><a href="#">'+item.name+'</a></h3>'+
           '<h4 class="product-price"><span class="qty">'+item.qty+'x</span>'+format(item.price)+'</h4>'+
         '</div>'+
-        '<button class="delete" data-remove="'+item.id+'"><i class="fa fa-close"></i></button>';
+        '<button type="button" class="delete" data-remove="'+item.id+'"><i class="fa fa-close" data-remove="'+item.id+'"></i></button>';
       listEl.appendChild(w);
     });
-    // делегирование удаления вынесено глобально
+
+    // Делегирование удаления прямо на выпадающем блоке
+    var dropdown = document.querySelector('.cart-dropdown');
+    if (dropdown && !dropdown._bindRemove) {
+      dropdown.addEventListener('click', function(e){
+        var del = e.target.closest('[data-remove]');
+        if (!del) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var id = del.getAttribute('data-remove');
+        if (!id) return;
+        removeFromCart(id);
+        showToast('товар удален');
+      });
+      dropdown._bindRemove = true;
+    }
+  }
+
+  function showToast(text){
+    try {
+      var t = document.createElement('div');
+      t.className = 'toast-mini';
+      t.textContent = text;
+      document.body.appendChild(t);
+      setTimeout(function(){ if(t && t.parentNode) t.parentNode.removeChild(t); }, 1800);
+    } catch(_){}
   }
 
   function bindAddToCartButtons(){
     document.body.addEventListener('click', function(e){
       var btn = e.target.closest('.add-to-cart-btn');
       if (!btn) return;
-      // Гейт: только после регистрации
-      try {
-        var user = JSON.parse(localStorage.getItem('electro_user')||'null');
-        if (!user){
-          alert('Для добавления в корзину войдите или зарегистрируйтесь');
-          window.location.href = 'pages/auth.html';
-          return;
-        }
-      } catch(_) {}
       var product = btn.closest('.product');
       var id = btn.getAttribute('data-id');
       var name = btn.getAttribute('data-name');
@@ -88,67 +104,39 @@
         id = (name || 'product') + '-' + Math.random().toString(36).slice(2,7);
       }
       addToCart({ id: id, name: name, price: price, image: image || '', qty: 1 });
+      showToast('товар успешно добавлен');
     });
-    // глобальное удаление из корзины
+
+    // Запасной глобальный обработчик (если удаление вне dropdown)
     document.body.addEventListener('click', function(e){
-      var del = e.target.closest('[data-remove]');
-      if (!del) return;
-      var id = del.getAttribute('data-remove');
+      var delBtn = e.target.closest('[data-remove]');
+      if (!delBtn) return;
+      var id = delBtn.getAttribute('data-remove');
       if (!id) return;
+      e.preventDefault();
       removeFromCart(id);
+      showToast('товар удален');
     });
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    const cartBlock = document.getElementById('cart-list');
-    const emptyBlock = document.getElementById('cart-empty');
-    const authBlock = document.getElementById('cart-auth-required');
-    const cartTotal = document.getElementById('cart-total');
-    // Проверка авторизации (пример — можно поменять под свою auth)
-    let logged = localStorage.getItem('userLogged');
-    if(!logged){
-        emptyBlock.style.display = 'none';
-        authBlock.style.display = 'block';
-        cartBlock.innerHTML = '';
-        return;
+    renderHeaderCart();
+    bindAddToCartButtons();
+
+    // Редирект на регистрацию при клике на cart, если не залогинен
+    var cartToggle = document.querySelector('.header-ctn .dropdown > a.dropdown-toggle');
+    if (cartToggle) {
+      cartToggle.addEventListener('click', function(e){
+        try {
+          var user = JSON.parse(localStorage.getItem('electro_user')||'null');
+          if (!user) {
+            e.preventDefault();
+            window.location.href = window.location.pathname.includes('/pages/') ? 'auth.html' : 'pages/auth.html';
+          }
+        } catch(_) {}
+      });
     }
-    authBlock.style.display = 'none';
-    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    if(!cart.length){
-        emptyBlock.style.display = 'block';
-        cartBlock.innerHTML = '';
-        return;
-    }else{
-        emptyBlock.style.display = 'none';
-    }
-    // Пример набора товаров, синхронизируем с products
-    const products = [
-        {id:'laptop1', name:'Ноутбук ASUS Zenbook 14 OLED', price:119990, img:'img/product01.png'},
-        {id:'laptop2', name:'Ноутбук Apple MacBook Air 13"', price:99990, img:'img/product02.png'},
-        {id:'smart1', name:'Смартфон Samsung Galaxy S24', price:79990, img:'img/product03.png'},
-        {id:'smart2', name:'Смартфон Xiaomi 14 Pro', price:69990, img:'img/product04.png'},
-        {id:'head1', name:'Наушники Sony WH-1000XM5', price:38990, img:'img/product05.png'},
-        {id:'head2', name:'Наушники JBL Tune 770NC', price:9990, img:'img/product06.png'},
-        {id:'camera1', name:'Фотоаппарат Canon EOS R50', price:74990, img:'img/product07.png'},
-        {id:'camera2', name:'Камера Sony ZV-E10', price:67990, img:'img/product08.png'},
-        {id:'acc1', name:'Портативная колонка JBL Charge 5', price:12990, img:'img/product09.png'},
-        {id:'acc2', name:'Беспроводная мышь Logitech M185', price:1290, img:'img/product01.png'},
-    ];
-    let html = '';
-    let total = 0;
-    cart.forEach(id=>{
-        const prod = products.find(p=>p.id===id);
-        if(!prod)return;
-        html += `<div class="product-card" data-id="${prod.id}">
-            <img src="${prod.img}" alt="${prod.name}">
-            <h4>${prod.name}</h4>
-            <p class="price">${prod.price.toLocaleString()} ₽</p>
-        </div>`;
-        total+=prod.price;
-    });
-    cartBlock.innerHTML = html;
-    cartTotal.textContent = total.toLocaleString()+ ' ₽';
-});
+  });
 })();
 
 

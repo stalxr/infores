@@ -982,6 +982,28 @@
   }
   document.body.addEventListener('click',cardClickHandler);
 });</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    function rewriteButtons(){
+      document.querySelectorAll('.add-to-cart-btn, .add-to-cart button').forEach(function(btn){
+        if (!btn._toCatalogBound) {
+          btn.innerHTML = '<i class="fa fa-shopping-cart"></i> Перейти в каталог';
+          btn.addEventListener('click', function(e){ e.preventDefault(); window.location.href = 'pages/store.html'; });
+          btn._toCatalogBound = true;
+        } else {
+          btn.innerHTML = '<i class="fa fa-shopping-cart"></i> Перейти в каталог';
+        }
+      });
+    }
+    rewriteButtons();
+    setTimeout(rewriteButtons, 300);
+    setTimeout(rewriteButtons, 1200);
+    try {
+      var obs = new MutationObserver(function(){ rewriteButtons(); });
+      obs.observe(document.body, { childList:true, subtree:true });
+    } catch(_){}
+  });
+</script>
 
 	</body>
 </html>

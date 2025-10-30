@@ -24,6 +24,9 @@ body {
 /* Hide compare buttons everywhere */
 .add-to-compare { display: none !important; }
 
+/* Hide quick view buttons everywhere */
+.quick-view { display: none !important; }
+
 /* Compact Toasts */
 .toast-notify { display: none !important; }
 .toast-notify.is-success, .toast-notify.is-danger, .toast-notify .emoji { display: none !important; }

@@ -44,7 +44,6 @@
             <div class="product-rating">${'<i class="fa fa-star"></i>'.repeat(5)}</div>
             <div class="product-btns">
               <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">в избранное</span></button>
-              <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">быстрый просмотр</span></button>
             </div>
           </div>
           <div class="add-to-cart">

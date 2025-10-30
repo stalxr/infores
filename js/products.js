@@ -77,7 +77,14 @@ document.addEventListener('DOMContentLoaded', function(){
     window.updateWishlistIcons = updateWishlistIcons;
 
     document.body.addEventListener('click', function(e){
-      var btn = e.target.closest('.add-to-wishlist');
+      var target = e.target;
+      var btn = target.closest && target.closest('.add-to-wishlist');
+      if (!btn){
+        // если клик прямо по иконке сердца
+        if (target.classList && (target.classList.contains('fa-heart') || target.classList.contains('fa-heart-o'))){
+          btn = target.closest('.product-btns') ? target.closest('.product-btns').querySelector('.add-to-wishlist') : null;
+        }
+      }
       if (!btn) return;
       var id = resolveProductIdFrom(btn);
       if (!id) return;

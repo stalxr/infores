@@ -1020,47 +1020,18 @@
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-    // map image filename -> catalog product id
-    var imgToId = {
-      'product01.png':'laptop1',
-      'product02.png':'head1',
-      'product03.png':'laptop2',
-      'product04.png':'tablet1',
-      'product05.png':'head2',
-      'product06.png':'laptop3',
-      'product07.png':'phone1',
-      'product08.png':'laptop4',
-      'product09.png':'camera1'
-    };
-
-    // wishlist click on homepage: go to catalog with selected product
+    // Wishlist click on homepage: go to catalog (no product preselection)
     document.body.addEventListener('click', function(e){
       var wish = e.target.closest && e.target.closest('.add-to-wishlist');
       if (!wish) return;
-      var card = wish.closest('.product');
-      var img = card && card.querySelector('.product-img img');
-      var file = img && (img.getAttribute('src')||'').split('/').pop();
-      var pid = file && imgToId[file] ? imgToId[file] : '';
       e.preventDefault();
       if (e.stopImmediatePropagation) e.stopImmediatePropagation();
       e.stopPropagation();
-      var url = 'pages/store.html' + (pid ? ('?sel='+encodeURIComponent(pid)) : '');
-      window.location.href = url;
+      window.location.href = 'pages/store.html';
       return false;
     }, true);
 
-    // clicking anywhere on a product card (excluding explicit buttons/links) -> go to catalog with selected id
-    document.body.addEventListener('click', function(e){
-      var card = e.target.closest && e.target.closest('.product');
-      if (!card) return;
-      if (e.target.closest('button, a, .product-btns, .add-to-cart, .add-to-cart-btn')) return;
-      var img = card.querySelector('.product-img img');
-      var file = img && (img.getAttribute('src')||'').split('/').pop();
-      var pid = file && imgToId[file] ? imgToId[file] : '';
-      e.preventDefault();
-      var url = 'pages/store.html' + (pid ? ('?sel='+encodeURIComponent(pid)) : '');
-      window.location.href = url;
-    });
+    // Do NOT hijack general product card clicks; keep homepage interactive and filters intact
   });
 </script>
 <script>

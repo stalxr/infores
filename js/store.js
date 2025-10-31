@@ -120,21 +120,6 @@
 
   document.addEventListener('DOMContentLoaded', function(){
     var wantSale = (window.location.hash === '#sale');
-    var params = new URLSearchParams(window.location.search);
-    var sel = params.get('sel');
-    if (sel){
-      state.filtered = PRODUCTS.filter(function(p){ return p.id===sel; });
-      state.page = 1;
-      renderProducts();
-      renderPagination();
-      // brief highlight
-      try {
-        var grid = document.getElementById('products-grid');
-        var el = grid && grid.querySelector('.product');
-        if (el){ el.style.boxShadow = '0 0 0 2px #D10024 inset'; setTimeout(function(){ el.style.boxShadow=''; }, 1600); }
-      } catch(_){}
-      return;
-    }
     resetFilters();
     if (wantSale){
       var saleCb = document.getElementById('only-sale');

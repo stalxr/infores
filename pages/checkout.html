@@ -100,14 +100,53 @@
 		  totalEl.textContent = format(total);
 		  document.getElementById('place-order').addEventListener('click', function(e){
 		    e.preventDefault();
-		    var requiredIds = ['bill-name','bill-surname','bill-email','bill-address','bill-city','bill-country','bill-zip','bill-phone'];
-		    for (var i=0;i<requiredIds.length;i++){
-		      var el = document.getElementById(requiredIds[i]);
-		      if (!el || !el.checkValidity() || !el.value.trim()){ alert('Заполните все обязательные поля корректно'); return; }
+		    function showError(el, msg){
+		      var wrap = el.parentElement;
+		      var hint = wrap.querySelector('.field-hint');
+		      if (!hint){
+		        hint = document.createElement('div');
+		        hint.className = 'field-hint';
+		        hint.style.color = '#d32f2f';
+		        hint.style.fontSize = '12px';
+		        hint.style.marginTop = '4px';
+		        wrap.appendChild(hint);
+		      }
+		      hint.textContent = msg||'';
 		    }
+		    function clearError(el){ var wrap=el.parentElement; var hint=wrap.querySelector('.field-hint'); if(hint){ hint.textContent=''; } }
+
+		    var required = [
+		      {id:'bill-name', label:'Имя'},
+		      {id:'bill-surname', label:'Фамилия'},
+		      {id:'bill-email', label:'E-mail'},
+		      {id:'bill-address', label:'Адрес'},
+		      {id:'bill-city', label:'Город'},
+		      {id:'bill-country', label:'Страна'},
+		      {id:'bill-zip', label:'Почтовый индекс'},
+		      {id:'bill-phone', label:'Телефон'}
+		    ];
+		    var ok = true;
+		    required.forEach(function(f){
+		      var el = document.getElementById(f.id);
+		      if (!el) return;
+		      if (!el.value.trim()){ showError(el, f.label+': обязательно для заполнения'); ok=false; }
+		      else if (!el.checkValidity()){ showError(el, f.label+': неверное значение'); ok=false; }
+		      else { clearError(el); }
+		    });
+		    if (!ok) return;
 		    alert('Заказ оформлен! Спасибо.');
 		    localStorage.removeItem('electro_cart');
 		    window.location.href = '../index.html';
+		  });
+
+		  ['bill-name','bill-surname','bill-email','bill-address','bill-city','bill-country','bill-zip','bill-phone'].forEach(function(id){
+		    var el = document.getElementById(id);
+		    if (!el) return;
+		    el.addEventListener('input', function(){
+		      if (el.value.trim() && el.checkValidity()){
+		        var wrap = el.parentElement; var hint=wrap.querySelector('.field-hint'); if(hint) hint.textContent='';
+		      }
+		    });
 		  });
 		})();
 		</script>

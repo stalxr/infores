@@ -148,13 +148,14 @@
     renderHeaderCart();
     bindAddToCartButtons();
 
-    // Редирект на регистрацию при клике на cart, если не залогинен
+    // Редирект на регистрацию при клике на cart, если не залогинен (кроме страницы избранного)
     var cartToggle = document.querySelector('.header-ctn .dropdown > a.dropdown-toggle');
     if (cartToggle) {
       cartToggle.addEventListener('click', function(e){
         try {
           var user = JSON.parse(localStorage.getItem('electro_user')||'null');
-          if (!user) {
+          var onWishlist = (window.location.pathname||'').includes('wishlist.html');
+          if (!user && !onWishlist) {
             e.preventDefault();
             window.location.href = window.location.pathname.includes('/pages/') ? 'auth.html' : 'pages/auth.html';
           }

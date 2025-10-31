@@ -163,4 +163,27 @@
 		});
 	}
 
+	// Newsletter subscription toast
+	document.addEventListener('DOMContentLoaded', function(){
+		var form = document.querySelector('#newsletter form');
+		if (!form) return;
+		form.addEventListener('submit', function(e){
+			e.preventDefault();
+			var emailInput = form.querySelector('input[type="email"]');
+			var email = (emailInput && emailInput.value || '').trim();
+			if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+				alert('Введите корректный e-mail');
+				return;
+			}
+			try {
+				var toast = document.createElement('div');
+				toast.className = 'toast-mini';
+				toast.textContent = 'Вы подписались на рассылку';
+				document.body.appendChild(toast);
+				setTimeout(function(){ if (toast && toast.parentNode) toast.parentNode.removeChild(toast); }, 1600);
+			} catch(_) {}
+			if (emailInput) emailInput.value = '';
+		});
+	});
+
 })(jQuery);

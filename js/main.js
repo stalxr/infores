@@ -186,4 +186,20 @@
 		});
 	});
 
+	// Mark wishlist link active on wishlist and catalog pages
+	document.addEventListener('DOMContentLoaded', function(){
+		var path = (window.location.pathname||'');
+		var isWishlist = path.includes('/pages/wishlist.html');
+		var isCatalog = path.includes('/pages/store.html');
+		var headerLinks = document.querySelectorAll('.header-ctn a');
+		headerLinks.forEach(function(a){
+			var hasHeart = !!a.querySelector('.fa-heart, .fa-heart-o');
+			if (hasHeart && (isWishlist || isCatalog)){
+				a.classList.add('active-wishlist');
+			} else if (hasHeart) {
+				a.classList.remove('active-wishlist');
+			}
+		});
+	});
+
 })(jQuery);

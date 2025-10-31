@@ -68,4 +68,11 @@ body {
 
 .wish-delete { z-index: 3; }
 
+/* Active wishlist highlight in header */
+.header-ctn a.active-wishlist i.fa-heart,
+.header-ctn a.active-wishlist i.fa-heart-o { color:#e53935 !important; }
+
+/* Wishlist page spacing tweaks so footer sits closer */
+.page-wishlist .section { padding-bottom: 20px; }
+
 

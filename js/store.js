@@ -129,7 +129,7 @@
     const filterBtn = document.getElementById('filter-apply-btn'); if (filterBtn) filterBtn.onclick = applyFilters;
     const resetBtn = document.getElementById('filter-reset-btn'); if (resetBtn) resetBtn.onclick = resetFilters;
     ['price-min','price-max','search-name'].forEach(id=>{ const el=document.getElementById(id); if(el) el.addEventListener('keypress',function(e){if(e.key==='Enter')applyFilters();}); });
-    var saleCb2 = document.getElementById('only-sale'); if (saleCb2) saleCb2.addEventListener('change', applyFilters);
+    // removed auto-apply on 'only-sale' change; now apply via Find button
   });
 
   // Помощник для checkboxes, category и brand

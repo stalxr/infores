@@ -75,4 +75,9 @@ body {
 /* Wishlist page spacing tweaks so footer sits closer */
 .page-wishlist .section { padding-bottom: 20px; }
 
+/* Wishlist page layout: footer at bottom */
+.page-wishlist { display: flex; flex-direction: column; min-height: 100vh; }
+.page-wishlist .section { flex: 1 0 auto; }
+.page-wishlist .footer { margin-top: auto; }
+
 

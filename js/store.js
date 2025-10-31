@@ -111,6 +111,7 @@
     var minEl=document.getElementById('price-min'); if(minEl) minEl.value='';
     var maxEl=document.getElementById('price-max'); if(maxEl) maxEl.value='';
     var qEl=document.getElementById('search-name'); if(qEl) qEl.value='';
+    var saleCb=document.getElementById('only-sale'); if (saleCb) saleCb.checked=false;
     state.filtered = PRODUCTS.slice();
     state.page=1;
     renderProducts();

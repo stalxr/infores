@@ -53,15 +53,15 @@
 					<div class="col-md-7">
 						<div class="billing-details">
 							<div class="section-title"><h3 class="title">Платёжный адрес</h3></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Имя"></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Фамилия"></div>
-							<div class="form-group"><input class="input" type="email" placeholder="E-mail"></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Адрес"></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Город"></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Страна"></div>
-							<div class="form-group"><input class="input" type="text" placeholder="Почтовый индекс"></div>
-							<div class="form-group"><input class="input" type="tel" placeholder="Телефон"></div>
-							<div class="form-group"><textarea class="input" placeholder="Комментарий к заказу"></textarea></div>
+							<div class="form-group"><input class="input" id="bill-name" type="text" placeholder="Имя" required></div>
+							<div class="form-group"><input class="input" id="bill-surname" type="text" placeholder="Фамилия" required></div>
+							<div class="form-group"><input class="input" id="bill-email" type="email" placeholder="E-mail" required></div>
+							<div class="form-group"><input class="input" id="bill-address" type="text" placeholder="Адрес" required></div>
+							<div class="form-group"><input class="input" id="bill-city" type="text" placeholder="Город" required></div>
+							<div class="form-group"><input class="input" id="bill-country" type="text" placeholder="Страна" required></div>
+							<div class="form-group"><input class="input" id="bill-zip" type="text" placeholder="Почтовый индекс" required></div>
+							<div class="form-group"><input class="input" id="bill-phone" type="tel" placeholder="Телефон" required pattern="[0-9+\-() ]{6,}"></div>
+							<div class="form-group"><textarea class="input" id="bill-comment" placeholder="Комментарий к заказу"></textarea></div>
 						</div>
 					</div>
 					<div class="col-md-5 order-details">
@@ -100,6 +100,11 @@
 		  totalEl.textContent = format(total);
 		  document.getElementById('place-order').addEventListener('click', function(e){
 		    e.preventDefault();
+		    var requiredIds = ['bill-name','bill-surname','bill-email','bill-address','bill-city','bill-country','bill-zip','bill-phone'];
+		    for (var i=0;i<requiredIds.length;i++){
+		      var el = document.getElementById(requiredIds[i]);
+		      if (!el || !el.checkValidity() || !el.value.trim()){ alert('Заполните все обязательные поля корректно'); return; }
+		    }
 		    alert('Заказ оформлен! Спасибо.');
 		    localStorage.removeItem('electro_cart');
 		    window.location.href = '../index.html';

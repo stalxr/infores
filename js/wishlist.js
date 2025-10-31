@@ -91,6 +91,10 @@
     if (wishGrid && !wishGrid._wishDelBound){
       wishGrid.addEventListener('click', function(e){
         var del = e.target.closest && e.target.closest('.wish-delete');
+        if (!del) {
+          var addBtn = e.target.closest && e.target.closest('.add-to-cart-btn');
+          if (addBtn) { try { addBtn.textContent = 'Уже в корзине'; } catch(_){} }
+        }
         if (!del) return;
         e.preventDefault();
         e.stopPropagation();

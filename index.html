@@ -1007,6 +1007,28 @@
     }, true);
   });
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    var map = {
+      'product01.png': 'ASUS Zenbook 14 OLED UX3402',
+      'product02.png': 'Sony WH-CH720N',
+      'product03.png': 'MSI Modern 14 C12',
+      'product04.png': 'Apple iPad 10.9 (2022)',
+      'product05.png': 'JBL Tune 510BT',
+      'product06.png': 'HP Pavilion 15',
+      'product07.png': 'Samsung Galaxy S23',
+      'product08.png': 'Lenovo IdeaPad 5 14',
+      'product09.png': 'Canon EOS R50'
+    };
+    document.querySelectorAll('.product').forEach(function(p){
+      var img = p.querySelector('.product-img img');
+      var nameA = p.querySelector('.product-name a');
+      if (!img || !nameA) return;
+      var file = (img.getAttribute('src')||'').split('/').pop();
+      if (map[file]) nameA.textContent = map[file];
+    });
+  });
+</script>
 
 	</body>
 </html>

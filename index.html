@@ -1020,9 +1020,18 @@
       'product08.png': 'Lenovo IdeaPad 5 14',
       'product09.png': 'Canon EOS R50'
     };
+    // Main product cards
     document.querySelectorAll('.product').forEach(function(p){
       var img = p.querySelector('.product-img img');
       var nameA = p.querySelector('.product-name a');
+      if (!img || !nameA) return;
+      var file = (img.getAttribute('src')||'').split('/').pop();
+      if (map[file]) nameA.textContent = map[file];
+    });
+    // Widget product cards in sliders
+    document.querySelectorAll('.product-widget').forEach(function(w){
+      var img = w.querySelector('.product-img img');
+      var nameA = w.querySelector('.product-name a');
       if (!img || !nameA) return;
       var file = (img.getAttribute('src')||'').split('/').pop();
       if (map[file]) nameA.textContent = map[file];

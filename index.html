@@ -1020,12 +1020,6 @@
 </script>
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-    // disable wishlist on homepage entirely
-    document.body.addEventListener('click', function(e){
-      var wish = e.target.closest && e.target.closest('.add-to-wishlist');
-      if (wish) { e.preventDefault(); e.stopPropagation(); return false; }
-    }, true);
-
     // map image filename -> catalog product id
     var imgToId = {
       'product01.png':'laptop1',
@@ -1038,6 +1032,23 @@
       'product08.png':'laptop4',
       'product09.png':'camera1'
     };
+
+    // wishlist click on homepage: go to catalog with selected product
+    document.body.addEventListener('click', function(e){
+      var wish = e.target.closest && e.target.closest('.add-to-wishlist');
+      if (!wish) return;
+      var card = wish.closest('.product');
+      var img = card && card.querySelector('.product-img img');
+      var file = img && (img.getAttribute('src')||'').split('/').pop();
+      var pid = file && imgToId[file] ? imgToId[file] : '';
+      e.preventDefault();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      e.stopPropagation();
+      var url = 'pages/store.html' + (pid ? ('?sel='+encodeURIComponent(pid)) : '');
+      window.location.href = url;
+      return false;
+    }, true);
+
     // clicking anywhere on a product card (excluding explicit buttons/links) -> go to catalog with selected id
     document.body.addEventListener('click', function(e){
       var card = e.target.closest && e.target.closest('.product');
